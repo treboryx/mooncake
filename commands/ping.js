@@ -13,6 +13,6 @@ exports.conf = {
 exports.help = {
   name: "ping",
   category: "Miscellaneous",
-  description: "Latency",
+  description: "Shows the bot's latency.",
   usage: "ping"
 };

@@ -4,10 +4,12 @@ const colors = require('../assets/colorsrandom.json')
 module.exports = async (client, message) => {
 
   if (message.author.bot) return;
-  
+
   const settings = client.getGuildSettings(message.guild);
 
-  const logs = message.guild.channels.find("name", settings.logs_channel);
+  if (settings.messageDeleteUpdate !== "true") return;
+
+  const logs = message.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
   const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
@@ -27,9 +29,8 @@ module.exports = async (client, message) => {
      .setTitle("Message Deleted")
      .setDescription(`Message sent by ${message.author} deleted in ${message.channel}\n\n`)
      .addField("Message:", "`" + message.content + "`")
-     .addField("Deleted by:", user)
-     .setColor(color)
-     .setFooter(`ID: ${message.id}`)
+     .setColor('#FF470F')
+     .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
      .setTimestamp()
- logs.send(deletedMessage);
+     logs.send(deletedMessage);
 };

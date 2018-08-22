@@ -1,5 +1,6 @@
 const { version } = require("discord.js");
 const moment = require("moment");
+let os = require('os')
 require("moment-duration-format");
 
 exports.run = (client, message, args, level) => { // eslint-disable-line no-unused-vars
@@ -11,7 +12,8 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
 ❯ Servers    :: ${client.guilds.size.toLocaleString()}
 ❯ Channels   :: ${client.channels.size.toLocaleString()}
 ❯ Discord.js :: v${version}
-❯ Node       :: ${process.version}`, {code: "asciidoc"});
+❯ Node       :: ${process.version}
+❯ Platform   :: ${os.platform()}`, {code: "asciidoc"});
 };
 
 exports.conf = {

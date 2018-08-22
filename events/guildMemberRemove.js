@@ -6,7 +6,9 @@ module.exports = (client, member) => {
 
   const settings = member.client.getGuildSettings(member.guild);
 
-  const logs = member.guild.channels.find("name", settings.logs_channel);
+  if (settings.guildMemberAddRemoveUpdate !== "true") return;
+
+  const logs = member.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
   const color = colors[Math.floor(Math.random() * colors.length)];
@@ -18,5 +20,4 @@ module.exports = (client, member) => {
     .setFooter(`ID: ${member.id}`)
     .setTimestamp()
     return logs.send(memberLeft);
-
 };

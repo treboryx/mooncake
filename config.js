@@ -7,11 +7,18 @@ const config = {
 
   "support": [],
 
-  "token": "hi, friend.",
+  "token": "oh hi mark",
 
   "defaultSettings" : {
     "prefix": `${prefix.prefix}`,
     "logs_channel": "logs",
+    "log_everything": "false",
+    "channelCreateDeleteUpdate": "true",
+    "guildUpdateBanAddRemove": "true",
+    "guildMemberAddRemoveUpdate": "true",
+    "messageDeleteUpdate": "true",
+    "roleCreateDeleteUpdate": "true",
+    "voiceStateUpdate": "false",
     "mod_role": "Moderator",
     "admin_role": "Administrator",
     "system_notice": "true", // This gives a notice when a user tries to run a command that they do not have permission to use.

@@ -56,7 +56,6 @@ const init = async () => {
 
 };
 
-
 // client.on('message', async message => {
 //   var args = message.content.split(/[ ]+/);
 

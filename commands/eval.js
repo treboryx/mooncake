@@ -6,7 +6,7 @@
 
 // However it's, like, super ultra useful for troubleshooting and doing stuff
 // you don't want to put in a command.
-exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
+exports.run = async (client, message, args, level) => {
   const code = args.join(" ");
   try {
     const evaled = eval(code);

@@ -7,7 +7,7 @@ const mainFuncs = require('../util/main.js')
 
 exports.run = async function (client, msg, args) {
 	if (!args[0]) {
-		return client.reply('You gotta give me something to ask Trump :eyes:', msg)
+		return msg.reply('You gotta give me something to ask Trump :eyes:', msg)
 	}
 
 	const question = args.join(' ')
@@ -38,6 +38,6 @@ exports.conf = {
 exports.help = {
   name: 'asktrump',
 	category: "Miscellaneous",
-  description: 'ask trump',
+  description: 'Ask Trump something.',
   usage: 'asktrump'
 };

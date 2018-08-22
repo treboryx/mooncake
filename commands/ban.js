@@ -6,7 +6,7 @@ exports.run = async function(client, message, args) {
       const settings = client.getGuildSettings(message.guild);
 
       if(!message.member.hasPermission("BAN_MEMBERS")) return errors.noPerms(message, "BAN_MEMBERS");
-      if(args[0] == "help"){
+      if(args[0] == "help" || args.length == 0){
         message.reply(`Usage: ${message.settings.prefix}ban <user> <reason>`);
         return;
       }
@@ -18,9 +18,8 @@ exports.run = async function(client, message, args) {
       if(bUser.hasPermission("MANAGE_MESSAGES")) return errors.equalPerms(message, bUser, "MANAGE_MESSAGES");
 
       let banEmbed = new Discord.RichEmbed()
-      .setDescription("~Ban~")
       .setColor("#bc0000")
-      .addField("Banned User", `${bUser} with ID ${bUser.id}`)
+      .addField("User Banned", `${bUser} with ID ${bUser.id}`)
       .addField("Banned By", `<@${message.author.id}> with ID ${message.author.id}`)
       .addField("Banned In", message.channel)
       .addField("Time", message.createdAt)

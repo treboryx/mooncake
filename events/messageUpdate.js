@@ -7,7 +7,9 @@ module.exports = async (client, message, newMsg) => {
 
   const settings = client.getGuildSettings(message.guild);
 
-  const logs = message.guild.channels.find("name", settings.logs_channel);
+  if (settings.messageDeleteUpdate !== "true") return;
+
+  const logs = message.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
   if (message.content === newMsg.content) return;
 

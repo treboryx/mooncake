@@ -3,11 +3,13 @@ const colors = require('../assets/colorsrandom.json')
 
 
 module.exports = async (client, oldMember, newMember) => {
-  
+
 
   const settings = oldMember.client.getGuildSettings(oldMember.guild);
 
-  const logs = oldMember.guild.channels.find("name", settings.logs_channel);
+  if (settings.guildMemberAddRemoveUpdate !== "true") return;
+
+  const logs = newMember.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
   const entry = await oldMember.guild.fetchAuditLogs({type: 'MANAGE_ROLES'}).then(audit => audit.entries.first())
@@ -22,14 +24,57 @@ module.exports = async (client, oldMember, newMember) => {
 
   const color = colors[Math.floor(Math.random() * colors.length)];
 
+  if(oldMember.roles === newMember.roles) return;
   if(oldMember.roles === newMember.roles && (oldMember.nickname === newMember.nickname)) return;
-  const memberUpdated = new Discord.RichEmbed()
-     .setTitle("Member Updated") // displayAvatarURL to be added
-     .setColor(color)
-     .addField(`Previous Roles:`, oldMember.roles.map(e => e).join(','))
-     .addField(`New Roles:`, newMember.roles.map(e => e).join(','))
-     .addField("Updated by:", user)
-     .setFooter(`ID: ${newMember.id}`)
-     .setTimestamp()
-     logs.send(memberUpdated);
+
+  if(oldMember.roles !== newMember.roles && (oldMember.nickname === newMember.nickname)) {
+
+        const memberUpdated = new Discord.RichEmbed()
+       .setAuthor("Member Updated", newMember.avatarURL)
+       .setDescription(`${newMember}`)
+       .setColor(newMember.displayHexColor)
+       .addField(`Before:`, oldMember.roles.map(e => e).join(','))
+       .addField(`After:`, newMember.roles.map(e => e).join(','))
+       .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
+       .setTimestamp()
+       logs.send(memberUpdated);
+  } else {
+
+    if(oldMember.nickname !== newMember.nickname) {
+      if(oldMember.nickname === null) {
+
+            const memberUpdated = new Discord.RichEmbed()
+           .setAuthor("Nickname Changed", newMember.avatarURL)
+           .setDescription(`❯ ${newMember}\n❯ **Before:** None\n❯ **After:** ${newMember.nickname}`)
+           .setColor(newMember.displayHexColor)
+           .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
+           .setTimestamp()
+
+           logs.send(memberUpdated);
+      } else if(newMember.nickname === null) {
+
+            const memberUpdated = new Discord.RichEmbed()
+           .setAuthor("Nickname Changed", newMember.avatarURL)
+           .setDescription(`❯ ${newMember}\n❯ **Before:** ${oldMember.nickname}\n❯ **After:** None`)
+           .setColor(newMember.displayHexColor)
+           .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
+           .setTimestamp()
+
+           logs.send(memberUpdated);
+
+      } else {
+
+            const memberUpdated = new Discord.RichEmbed()
+           .setAuthor("Nickname Changed", newMember.avatarURL)
+           .setDescription(`❯ ${newMember}\n❯ **Before:** ${oldMember.nickname}\n❯ **After:** ${newMember.nickname}`)
+           .setColor(newMember.displayHexColor)
+           .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
+           .setTimestamp()
+
+           logs.send(memberUpdated);
+      }
+
+    }
+  }
+
 };

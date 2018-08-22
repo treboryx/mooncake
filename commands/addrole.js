@@ -2,8 +2,8 @@ const errors = require("../util/errors.js");
 
 exports.run = async function(client, message, args) {
   if (!message.member.hasPermission("MANAGE_ROLES")) return errors.noPerms(message, "MANAGE_ROLES");
-  if (args[0] == "help") {
-    message.reply("Usage: !addrole <user> <role>");
+  if(args[0] == "help" || args.length == 0){
+    message.reply(`Usage: ${message.settings.prefix}addrole <user> <role>`);
     return;
   }
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);

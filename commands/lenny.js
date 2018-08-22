@@ -14,6 +14,6 @@ exports.conf = {
 exports.help = {
   name: 'lenny',
   category: "Miscellaneous",
-  description: 'no',
+  description: 'Lenny face',
   usage: 'lenny'
 };
