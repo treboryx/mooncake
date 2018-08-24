@@ -19,7 +19,6 @@ client.aliases = new Enmap();
 
 client.settings = new Enmap({provider: new EnmapLevel({name: "settings", persistent: true})});
 
-
 const init = async () => {
 
   const cmdFiles = await readdir("./commands/");
