@@ -15,6 +15,7 @@ exports.run = (client, message, args, level) => { // eslint-disable-line no-unus
 ❯ Node       :: ${process.version}
 ❯ Platform   :: ${os.platform()}`, {code: "asciidoc"});
 };
+// [text](link)
 
 exports.conf = {
   enabled: true,

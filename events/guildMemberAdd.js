@@ -3,7 +3,7 @@ const colors = require('../assets/colorsrandom.json')
 
 module.exports = (client, member) => {
 
-
+  if (member.displayName === /(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]/g) member.ban();
   const settings = member.client.getGuildSettings(member.guild);
 
   if (settings.guildMemberAddRemoveUpdate !== "true") return;
