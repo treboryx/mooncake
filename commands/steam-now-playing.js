@@ -14,6 +14,8 @@ exports.run = async function (client, message, args) {
 
 	let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	if(!target) return message.reply(`Usage: ${message.settings.prefix}steamplaying [user] [game]`);
+	// let user = args[0];
+	if(!args[0].startsWith("<@") && (!args[0].endsWith(">"))) return message.reply(`Usage: ${message.settings.prefix}steamplaying [user] [game]`);
 	let game = args.join(" ").slice(21);
 	if(!game) return message.reply(`Usage: ${message.settings.prefix}steamplaying [user] [game]`);
 	const avatarURL = target.user.displayAvatarURL;
