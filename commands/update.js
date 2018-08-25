@@ -1,39 +1,47 @@
 const { promisify } = require('util')
-// const exec = promisify(require('child_process').exec)
+const exec = promisify(require('child_process').exec)
 const path = require('path')
-const exec = require('child_process').execSync
 
-exports.run = async (client, message, args, level) => {
+exports.run = async (client, message, args) => {
 
-  await message.channel.send('**Checking for updates...**')
-  try {
-        var gitPull = exec('git pull --all').toString()
-        await message.channel.send({
-          content: gitPull,
-          code: '',
-          split: true
-        })
-        if (/Already up-to-date.|Already up to date./.test(gitPull)) {
-          await message.channel.send('**There was nothing to update!**')
-        } else {
-          var npmUpdate = exec('npm install').toString()
-          await message.channel.send({
-            content: npmUpdate,
-            code: '',
-            split: true
-          })
-          await message.channel.send(`**Successfully updated everything! Awaiting next restart.**`)
-        }
-      } catch (error) {
-        await message.channel.send({
-          content: error.stack,
-          code: '',
-          split: true
-        })
-  message.channel.send('**An error has occurred.**')
-  }
+    const settings = message.settings
 
-};
+    message.channel.send('Checking for updates...')
+
+    let repository = await require('../package.json').repository.url.split('+')[1]
+    delete require.cache[require.resolve('../package.json')]
+
+    const { stdout, stderr, err } = await exec(`git pull`, { cwd: path.join(__dirname, '../') }).catch(err => ({ err }))
+    if (err) {
+      console.error(err)
+      throw 'Something went wrong!'
+    }
+
+    if (stdout.toString().includes('Already up-to-date') || (stdout.toString().includes('Already up to date'))) {
+        return message.channel.send('Already up-to-date!');
+    } else {
+      const { stdout, stderr, err } = await exec(`npm install -g npm`, { cwd: path.join(__dirname, '../') }).catch(err => ({ err }))
+      if (err) {
+        console.error(err)
+        throw 'Something went wrong!'
+      }
+      await message.channel.send('Successfully updated everything!')
+    }
+
+    const packageJSON = await require('../package.json')
+
+
+    message.channel.send('Updating...')
+    client.wait(5000)
+    /*
+    const out = []
+    if (stdout) out.push(stdout)
+    if (stderr) out.push(stderr)
+    await message.channel.send(out.join('---\n'), { code: true })
+    */
+    process.exit(1);
+  };
+
 
 exports.conf = {
   enabled: true,

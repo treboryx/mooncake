@@ -8,16 +8,14 @@ registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'Noto-CJK.otf'), { fa
 registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 
-exports.run = async function (client, message, [game]) {
+exports.run = async function (client, message, args) {
 
 	const settings = client.getGuildSettings(message.guild);
 
-	if(!game){
-		message.reply(`Usage: ${message.settings.prefix}steamplaying [user] [game]`);
-		return;
-	}
-	let target = message.mentions.members.first();
+	let target = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 	if(!target) return message.reply(`Usage: ${message.settings.prefix}steamplaying [user] [game]`);
+	let game = args.join(" ").slice(21);
+	if(!game) return message.reply(`Usage: ${message.settings.prefix}steamplaying [user] [game]`);
 	const avatarURL = target.user.displayAvatarURL;
 
 

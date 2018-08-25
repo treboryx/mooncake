@@ -7,7 +7,7 @@ exports.run = async function(client, message, args) {
 
       if(!message.member.hasPermission("BAN_MEMBERS")) return errors.noPerms(message, "BAN_MEMBERS");
       if(args[0] == "help" || args.length == 0){
-        message.reply(`Usage: ${message.settings.prefix}ban <user> <reason>`);
+        message.reply(`Usage: ${message.settings.prefix}ban [user] [reason]`);
         return;
       }
       let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));

@@ -8,7 +8,7 @@ exports.run = async function(client, message, args) {
 
     if(!message.member.hasPermission("KICK_MEMBERS")) return errors.noPerms(message, "KICK_MEMBERS");
     if(args[0] == "help" || args.length == 0){
-      message.reply(`Usage: ${message.settings.prefix}kick <user> <reason>`);
+      message.reply(`Usage: ${message.settings.prefix}kick [user] [reason]`);
       return;
     }
 

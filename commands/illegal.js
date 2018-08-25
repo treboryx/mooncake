@@ -7,11 +7,17 @@ registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'Noto-CJK.otf'), { fa
 registerFont(path.join(__dirname, '..', 'assets', 'fonts', 'Noto-Emoji.ttf'), { family: 'Noto' });
 
 
-exports.run = async function (client, msg, { text, verb }) {
+exports.run = async function (client, msg, args) {
 
 	const settings = client.getGuildSettings(msg.guild);
 
-	if(verb !== "is" || verb !== "are") return msg.channel.send(`\`\`\`Usage: ${msg.settings.prefix}illegal <is/are> <what's illegal (single word)>\`\`\``)
+	let verb = args[0];
+	// if(args[0] !== "is" || args[0] !== "are" ) {
+	// 	return msg.channel.send(`\`\`\`Usage: ${msg.settings.prefix}illegal [verb] [text]\`\`\``)
+	// }
+	let text = args.join(" ").slice(3);
+	if(!text) return msg.reply(`Usage: ${msg.settings.prefix}illegal [verb] [text]`);
+
 	const base = await loadImage(path.join(__dirname, '..', 'assets', 'images', 'illegal.png'));
 		const canvas = createCanvas(base.width, base.height);
 		const ctx = canvas.getContext('2d');

@@ -7,7 +7,7 @@ const config = {
 
   "support": [],
 
-  "token": "oh hi mark",
+  "token": "NDczMTAzMjc4MTAwNzA5Mzc2.DmCAww.HrAfDWiP4mNdx2GQ_FwtDqsDN04",
 
   "defaultSettings" : {
     "prefix": `${prefix.prefix}`,
