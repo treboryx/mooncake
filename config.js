@@ -19,7 +19,7 @@ const config = {
     "messageDeleteUpdate": "true",
     "roleCreateDeleteUpdate": "true",
     "voiceStateUpdate": "false",
-    "mod_role": "Moderator",
+    "mod_role": "Moderator", //test
     "admin_role": "Administrator",
     "system_notice": "true", // This gives a notice when a user tries to run a command that they do not have permission to use.
     "welcome_channel": "welcome",
