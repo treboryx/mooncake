@@ -15,7 +15,7 @@ const config = {
     "log_everything": "false",
     "channelCreateDeleteUpdate": "true",
     "guildUpdateBanAddRemove": "true",
-    "guildMemberAddRemoveUpdate": "true", //text
+    "guildMemberAddRemoveUpdate": "true", //textaadw
     "messageDeleteUpdate": "true",
     "roleCreateDeleteUpdate": "true",
     "voiceStateUpdate": "false",
