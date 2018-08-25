@@ -10,7 +10,7 @@ const client = new Discord.Client();
 
 client.config = require("./config.js");
 
-client.logger = require("./util/Logger");
+client.logger = require("./util/Logger"); // logger
 
 require("./modules/functions.js")(client);
 
