@@ -17,6 +17,7 @@ require("./modules/functions.js")(client);
 client.commands = new Enmap();
 client.aliases = new Enmap();
 
+// client.gblacklist = new Enmap({name: "gblacklist", persistent: true });
 client.settings = new Enmap({provider: new EnmapLevel({name: "settings", persistent: true})});
 
 const init = async () => {
