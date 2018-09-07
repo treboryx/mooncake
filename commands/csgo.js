@@ -14,7 +14,7 @@ function getStatData(location, message , $){
   // if(stat_array == null || stat_array.length == 0){
   //   return message.channel.send("Invalid User");
   // }else{
-  //   stat = stat_array[0].data;
+     stat = stat_array[0].data;
   // }
 
   return stat;
