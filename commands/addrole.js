@@ -10,7 +10,7 @@ exports.run = async function(client, message, args) {
   if (!rMember) return errors.cantfindUser(message.channel);
   let role = args.join(" ").slice(22);
   if (!role) return message.reply("Specify a role!");
-  let gRole = message.guild.roles.find(`name`, role);
+  let gRole = message.guild.roles.find(r => r.name.toLowerCase() === role.toLowerCase())
   if (!gRole) return message.reply("Couldn't find that role.");
 
   if (rMember.roles.has(gRole.id)) return message.reply("They already have that role.");

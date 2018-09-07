@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 
 exports.run = async function(client, message, args) {
 
-      if(args.length === 0) return message.reply("Give us more details.")
+      if(args.length === 0) return message.reply("Give me more details.")
 
       var embed = new Discord.RichEmbed()
         .setColor('RANDOM')

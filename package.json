@@ -6,6 +6,7 @@
   "dependencies": {
     "canvas": "^2.0.0-alpha.13",
     "chalk": "^2.4.1",
+    "cheerio": "^1.0.0-rc.2",
     "common-tags": "^1.8.0",
     "custom-translate": "^2.2.4",
     "discord.js": "^11.4.2",
@@ -20,6 +21,7 @@
     "npm": "^6.4.0",
     "os": "^0.1.1",
     "react-trump": "^0.2.1",
+    "request": "^2.88.0",
     "util": "^0.11.0"
   },
   "devDependencies": {},
