@@ -38,6 +38,9 @@ exports.run = async function(client, message, args) {
           request(UR_L, function(err, resp, body){
 
               $ = cheerio.load(body);
+              var NAME = $('.stats-header-content main').eq(0).text();
+              NAME = $.parseHTML(NAME).data;
+              console.log(NAME);
 
               var KD = getStatData(0, message, $);
               var WIN = getStatData(1, message, $);
@@ -71,6 +74,7 @@ exports.run = async function(client, message, args) {
               .addField('Bombs Set', BS, true)
               .addField('Bombs Defused', BD, true)
               .addField('Headshots', HS, true)
+              .addField('MVPs', MVP, true)
               .addField('Money Earned', MONEY, true)
               .addField('Hostages Rescued', HR, true)
               .addField('Playtime', PLAYTIME, true)
