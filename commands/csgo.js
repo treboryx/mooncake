@@ -38,9 +38,9 @@ exports.run = async function(client, message, args) {
           request(UR_L, function(err, resp, body){
 
               $ = cheerio.load(body);
-              var NAME = $('.stats-header-content main').eq(0).text();
-              NAME = $.parseHTML(NAME).data;
-              console.log(NAME);
+              // var NAME = $('.stats-header-content main').eq(0).text();
+              // NAME = $.parseHTML(NAME).data;
+              // console.log(NAME);
 
               var KD = getStatData(0, message, $);
               var WIN = getStatData(1, message, $);
