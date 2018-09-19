@@ -1,5 +1,5 @@
 exports.run = async function(client, message, args) {
-   message.channel.send(`= Servers [${this.client.guilds.size}] = \n${this.client.guilds.map(g => `${g.id}  -  ${g.name}  -  [Members: ${g.memberCount}]`).join('\n')}`, {code:'asciidoc', split: { char: '\u200b' }});
+   message.channel.send(`= Servers [${client.guilds.size}] = \n${client.guilds.map(g => `${g.id}  -  ${g.name}  -  [Members: ${g.memberCount}]`).join('\n')}`, {code:'asciidoc', split: { char: '\u200b' }});
 
 };
 
@@ -12,7 +12,7 @@ exports.conf = {
 
 exports.help = {
   name: 'servers',
-  category: "servers",
+  category: "System",
   description: 'List of all servers',
   usage: 'servers'
 };
