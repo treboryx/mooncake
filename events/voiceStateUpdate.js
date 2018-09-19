@@ -31,13 +31,17 @@ module.exports = async (client, oldMember, newMember) => {
       .setTimestamp()
       logs.send(editedMessage)
 
-  } else {
+  } else if(oldUserChannel !== undefined && newUserChannel !== undefined) {
 
-    const editedMessage = new Discord.RichEmbed()
+  	const editedMessage = new Discord.RichEmbed()
     .setDescription(`\`${newMember.user.username}#${newMember.user.discriminator}\` switched voice channel \`${oldUserChannel.name}\` ==> \`${newUserChannel.name}\``)
     .setColor(color)
     .setTimestamp()
     logs.send(editedMessage)
+
+
+  } else {
+return;
 
   }
 
