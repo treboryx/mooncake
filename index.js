@@ -14,6 +14,7 @@ client.logger = require("./util/Logger"); // logger
 
 require("./modules/functions.js")(client);
 
+client.playlists = new Enmap();
 client.commands = new Enmap();
 client.aliases = new Enmap();
 

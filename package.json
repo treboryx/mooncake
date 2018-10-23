@@ -10,7 +10,7 @@
     "common-tags": "^1.8.0",
     "custom-translate": "^2.2.4",
     "discord.js": "^11.4.2",
-    "enmap": "^3.1.1",
+    "enmap": "^3.1.4",
     "enmap-level": "^2.1.0",
     "exec": "^0.2.1",
     "fs": "0.0.1-security",
@@ -24,8 +24,10 @@
     "os": "^0.1.1",
     "react-trump": "^0.2.1",
     "request": "^2.88.0",
+    "simple-youtube-api": "^5.0.2",
     "sylphy": "^0.4.5",
-    "util": "^0.11.0"
+    "util": "^0.11.0",
+    "ytdl-core": "^0.26.3"
   },
   "devDependencies": {},
   "scripts": {
