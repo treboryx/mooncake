@@ -15,6 +15,10 @@ const autoResponder = {
   "mock": {
     file: "https://cdn.discordapp.com/attachments/458751527407058954/473641693883924481/mock.png"
   }
+  ,
+  "kthnx": {
+    file: "https://cdn.discordapp.com/emojis/505062425121390592.gif"
+  }
 };
 
 exports.autoResponder = autoResponder;
@@ -37,6 +41,44 @@ exports.checkMembers = function (guild) {
     return memberCount;
   }
 
+
+exports.checkMembersOnline = function (guild) {
+      let memberCountOnline = 0;
+      guild.members.forEach(member => {
+        if(member.user.presence.status === "online") memberCountOnline++;
+      });
+      return memberCountOnline;
+    }
+
+exports.checkMembersIdle = function (guild) {
+        let memberCountIdle = 0;
+        guild.members.forEach(member => {
+          if(member.user.presence.status === "idle") memberCountIdle++;
+        });
+        return memberCountIdle;
+      }
+  exports.checkMembersDND = function (guild) {
+          let memberCountDND = 0;
+          guild.members.forEach(member => {
+            if(member.user.presence.status === "dnd") memberCountDND++;
+          });
+          return memberCountDND;
+        }
+
+  exports.checkMembersStreaming = function (guild) {
+            let memberCountStreaming = 0;
+            guild.members.forEach(member => {
+              if(member.user.presence.status === "streaming") memberCountStreaming++;
+            });
+            return memberCountStreaming;
+          }
+  exports.checkMembersOffline = function (guild) {
+              let memberCountOffline = 0;
+              guild.members.forEach(member => {
+                if(member.user.presence.status === "offline") memberCountOffline++;
+              });
+              return memberCountOffline;
+            }
 
 
 exports.mock = function(string) {

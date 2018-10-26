@@ -2,7 +2,7 @@ const { get } = require("snekfetch");
 
 exports.run = async function(client, message, args) {
 if (!message.channel.nsfw) return message.channel.send("🔞 Cannot display NSFW content in a SFW channel.");
-const msg = await message.channel.send(`<a:typing:492333599346130954> **${message.member.displayName}** is looking for boobies...`);
+const msg = await message.channel.send(`<a:typing:492332824091688960> **${message.member.displayName}** is looking for boobies...`);
 const { body } = await get("http://api.oboobs.ru/boobs/0/1/random");
 await msg.edit({
  embed: {

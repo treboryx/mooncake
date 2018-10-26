@@ -29,6 +29,11 @@
     "util": "^0.11.0",
     "ytdl-core": "^0.26.3"
   },
+  "nodemonConfig": {
+    "ignore": [
+      "data/*", "build/*", "stuff/*"
+    ]
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,4 +1,3 @@
-const checkBots = require('../util/functions.js')
 const check = require('../util/functions.js')
 
 exports.run = async function(client, message, args) {
