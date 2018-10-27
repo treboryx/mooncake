@@ -5,8 +5,6 @@ module.exports = async (client, oldMember, newMember) => {
 
   const settings = client.getGuildSettings(oldMember.guild);
 
-  if (settings.voiceStateUpdate !== "true") return;
-
   const logs = oldMember.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
