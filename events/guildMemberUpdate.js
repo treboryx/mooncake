@@ -4,21 +4,23 @@ const colors = require('../assets/colorsrandom.json')
 
 module.exports = async (client, oldMember, newMember) => {
 
-
   const settings = oldMember.client.getGuildSettings(oldMember.guild);
 
   const logs = newMember.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
   const entry = await oldMember.guild.fetchAuditLogs({type: 'MEMBER_UPDATE'}).then(audit => audit.entries.first())
-  let user = ""
+  let user = entry.executor
+  
+  const entryRoles = await oldMember.guild.fetchAuditLogs({type: 'MEMBER_ROLE_UPDATE'}).then(audit => audit.entries.first())
+  let userRoles = entryRoles.executor
     // if (entry.extra.channel.id === oldMember.channel.id
       // if (entry.target.id === entry.author.id
-      if (entry.createdTimestamp > (Date.now() - 5000)) {
-    user = entry.executor
-  } else {
-    user = oldMember.author
-  }
+  //     if (entry.createdTimestamp > (Date.now() - 5000)) {
+  //   user = entry.executor
+  // } else {
+  //   user = oldMember.author
+  // }
 
   const color = colors[Math.floor(Math.random() * colors.length)];
 
@@ -33,7 +35,7 @@ module.exports = async (client, oldMember, newMember) => {
        .setColor(newMember.displayHexColor)
        .addField(`Before:`, oldMember.roles.map(e => e).join(','))
        .addField(`After:`, newMember.roles.map(e => e).join(','))
-       .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
+       .setFooter(`By ${userRoles.username}#${userRoles.discriminator}`, userRoles.avatarURL)
        .setTimestamp()
     if (settings.log_everything === "true") {
              logs.send(memberUpdated);
