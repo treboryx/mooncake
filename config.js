@@ -7,9 +7,9 @@ const config = {
 
   "support": [],
 
-  "token": "NDczMTAzMjc4MTAwNzA5Mzc2.DmOP1A.eevC0old3hmK8oo9AwMMFDTSPc4",
+  "token": "oh hi mark",
 
-  "youtubeAPIKey": "AIzaSyATSvkJICLLNQOrgS81WiyaC_b4ORTLodU",
+  "youtubeAPIKey": "oh hi mark",
 
   "defaultSettings" : {
     "prefix": `${prefix.prefix}`,
