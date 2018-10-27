@@ -21,7 +21,13 @@ module.exports = async (client, oldMember, newMember) => {
        .setDescription(`\`${newMember.user.username}#${newMember.user.discriminator}\` joined voice channel \`${newUserChannel.name}\``)
        .setColor(color)
        .setTimestamp()
-       logs.send(editedMessage)
+       if (settings.log_everything === "true") {
+           return logs.send(editedMessage);
+         } else if (settings.voiceStateUpdate === "true") {
+           return logs.send(editedMessage);
+         } else {
+           return;
+         }
 
  } else if(newUserChannel === undefined) {
 
@@ -29,7 +35,13 @@ module.exports = async (client, oldMember, newMember) => {
       .setDescription(`\`${newMember.user.username}#${newMember.user.discriminator}\` left voice channel \`${oldUserChannel.name}\``)
       .setColor(color)
       .setTimestamp()
-      logs.send(editedMessage)
+      if (settings.log_everything === "true") {
+          return logs.send(editedMessage);
+        } else if (settings.voiceStateUpdate === "true") {
+          return logs.send(editedMessage);
+        } else {
+          return;
+        }
 
   } else if(oldUserChannel !== undefined && newUserChannel !== undefined) {
 
@@ -37,7 +49,13 @@ module.exports = async (client, oldMember, newMember) => {
     .setDescription(`\`${newMember.user.username}#${newMember.user.discriminator}\` switched voice channel \`${oldUserChannel.name}\` ==> \`${newUserChannel.name}\``)
     .setColor(color)
     .setTimestamp()
-    logs.send(editedMessage)
+    if (settings.log_everything === "true") {
+        return logs.send(editedMessage);
+      } else if (settings.voiceStateUpdate === "true") {
+        return logs.send(editedMessage);
+      } else {
+        return;
+      }
 
 
   } else {

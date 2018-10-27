@@ -4,14 +4,11 @@ module.exports = async (client, oldGuild, newGuild) => {
 
     const settings = client.getGuildSettings(oldGuild.guild);
 
-    if (settings.guildUpdateBanAddRemove !== "true") return;
-
     const logs = oldGuild.channels.find(channel => channel.name === settings.logs_channel);
     if(!logs) return;
 
     const entry = await oldGuild.fetchAuditLogs({type: 'GUILD_UPDATE'}).then(audit => audit.entries.first())
     let userExec = entry.executor
-
 
     if(oldGuild.name !== newGuild.name && (oldGuild.region !== newGuild.region)) {
 
@@ -22,7 +19,14 @@ module.exports = async (client, oldGuild, newGuild) => {
       .addField("Region",`**❯ Before:** ${oldGuild.region}\n**❯ After:** ${newGuild.region}`)
       .setFooter(`By ${userExec.username}#${userExec.discriminator}`, userExec.avatarURL)
       .setTimestamp()
-      return logs.send(guildUpdated);
+
+      if (settings.log_everything === "true") {
+            return logs.send(guildUpdated);
+          } else if (settings.guildUpdateBanAddRemove === "true") {
+            return logs.send(guildUpdated);
+          } else {
+            return;
+          }
 
     } else  if(oldGuild.name !== newGuild.name) {
 
@@ -33,7 +37,14 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setDescription(`**❯ Before:** ${oldGuild.name}\n**❯ After:** ${newGuild.name}`)
       .setFooter(`By ${userExec.username}#${userExec.discriminator}`, userExec.avatarURL)
       .setTimestamp()
-      return logs.send(guildUpdated);
+
+      if (settings.log_everything === "true") {
+            return logs.send(guildUpdated);
+          } else if (settings.guildUpdateBanAddRemove === "true") {
+            return logs.send(guildUpdated);
+          } else {
+            return;
+          }
 
     } else if(oldGuild.icon !== newGuild.icon) {
 
@@ -44,7 +55,14 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setThumbnail(newGuild.iconURL)
       .setFooter(`By ${userExec.username}#${userExec.discriminator}`, userExec.avatarURL)
       .setTimestamp()
-      return logs.send(guildUpdated);
+
+      if (settings.log_everything === "true") {
+            return logs.send(guildUpdated);
+          } else if (settings.guildUpdateBanAddRemove === "true") {
+            return logs.send(guildUpdated);
+          } else {
+            return;
+          }
 
     } else if(oldGuild.region !== newGuild.region) {
 
@@ -55,7 +73,14 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setDescription(`**❯ Before:** ${oldGuild.region}\n**❯ After:** ${newGuild.region}`)
       .setFooter(`By ${userExec.username}#${userExec.discriminator}`, userExec.avatarURL)
       .setTimestamp()
-      return logs.send(guildUpdated);
+
+      if (settings.log_everything === "true") {
+            return logs.send(guildUpdated);
+          } else if (settings.guildUpdateBanAddRemove === "true") {
+            return logs.send(guildUpdated);
+          } else {
+            return;
+          }
 
     } else {
       var guildUpdated = new Discord.RichEmbed()
@@ -63,7 +88,14 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setAuthor(`Guild Updated`,`${newGuild.iconURL}`)
       .setFooter(`By ${userExec.username}#${userExec.discriminator}`, userExec.avatarURL)
       .setTimestamp()
-      return logs.send(guildUpdated);
+
+      if (settings.log_everything === "true") {
+            return logs.send(guildUpdated);
+          } else if (settings.guildUpdateBanAddRemove === "true") {
+            return logs.send(guildUpdated);
+          } else {
+            return;
+          }
     }
 
 

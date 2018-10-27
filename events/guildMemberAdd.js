@@ -6,8 +6,6 @@ module.exports = (client, member) => {
   if (member.displayName === /(https?:\/\/)?(www\.)?(discord\.(gg|io|me|li)|discordapp\.com\/invite)\/.+[a-z]/g) member.ban();
   const settings = member.client.getGuildSettings(member.guild);
 
-  if (settings.guildMemberAddRemoveUpdate !== "true") return;
-
   const logs = member.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
@@ -19,7 +17,14 @@ module.exports = (client, member) => {
   .setDescription(`${member.user} ${member.user.tag}`)
   .setFooter(`ID: ${member.id}`)
   .setTimestamp()
-  logs.send(memberJoined);
+
+if (settings.log_everything === "true") {
+      logs.send(memberJoined);
+    } else if (settings.guildMemberAddRemoveUpdate === "true") {
+      logs.send(memberJoined);
+    } else {
+      return;
+    }
 
   if (settings.welcome_enabled !== "true") return;
 

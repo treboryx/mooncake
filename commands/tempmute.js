@@ -5,14 +5,14 @@ exports.run = async function(client, message, args) {
 
   const settings = client.getGuildSettings(message.guild);
 
-  if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("No can do.");
+  if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Insufficient permissions.");
     if (args[0] == "help" || args.length == 0) {
         message.reply(`Usage: ${message.settings.prefix}mute <user> <1s/m/h/d>`);
         return;
     }
     let tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if (!tomute) return message.reply("You didn't mentioned a user");
-    if (tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute that user.");
+    if (tomute.hasPermission("MANAGE_MESSAGES")) return message.reply("Can't mute user with equal permissions.");
     let reason = args.slice(2).join(" ");
     // if (!reason) return message.reply(`Usage: ${message.settings.prefix}mute <user> <1s/m/h/d>`);
 
@@ -75,7 +75,7 @@ exports.run = async function(client, message, args) {
         incidentschannel.send(muteembed);
       }
 
-    message.channel.send(`<@${tomute.id}> is muted for ${mutetime}`)
+    tomute.send(`<@${tomute.id}> you have been muted from **${message.guild.name}** for ${mutetime}`)
     await (tomute.addRole(muterole.id));
 
     setTimeout(function() {
@@ -87,7 +87,7 @@ exports.run = async function(client, message, args) {
 
 exports.conf = {
   enabled: true,
-  guildOnly: false,
+  guildOnly: true,
   aliases: [],
   permLevel: "Moderator"
 };

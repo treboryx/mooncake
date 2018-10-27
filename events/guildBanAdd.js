@@ -4,12 +4,10 @@ module.exports = async (member, guild, user) => {
 
     const settings = member.client.getGuildSettings(member.guild);
 
-    if (settings.guildUpdateBanAddRemove !== "true") return;
-
     const logs = member.guild.channels.find(channel => channel.name === settings.logs_channel);
     if(!logs) return;
 
-    const entry = await role.guild.fetchAuditLogs({type: 'ROLE_UPDATE'}).then(audit => audit.entries.first())
+    const entry = await role.guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first())
     let userExec = entry.executor
 
     var memberBanned = new Discord.RichEmbed()
@@ -18,6 +16,12 @@ module.exports = async (member, guild, user) => {
     .setDescription(`User: ${user} ${user.tag}\nUID: ${user.id}`)
     .setFooter(`By ${userExec.username}#${userExec.discriminator}`, userExec.avatarURL)
     .setTimestamp()
-    return logs.send(memberBanned);
 
+  if (settings.log_everything === "true") {
+        logs.send(memberBanned);
+      } else if (settings.guildUpdateBanAddRemove === "true") {
+        logs.send(memberBanned);
+      } else {
+        return;
+      }
 };

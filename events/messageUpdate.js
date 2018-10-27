@@ -7,8 +7,6 @@ module.exports = async (client, message, newMsg) => {
 
   const settings = client.getGuildSettings(message.guild);
 
-  if (settings.messageDeleteUpdate !== "true") return;
-
   const logs = message.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
   if (message.content === newMsg.content) return;
@@ -23,6 +21,13 @@ module.exports = async (client, message, newMsg) => {
      .setColor(color)
      .setFooter(`ID: ${message.id}`)
      .setTimestamp()
- logs.send(editedMessage);
+
+     if (settings.log_everything === "true") {
+         return logs.send(editedMessage);
+       } else if (settings.messageDeleteUpdate === "true") {
+         return logs.send(editeddMessage);
+       } else {
+         return;
+       }
 
 };

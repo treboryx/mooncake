@@ -7,17 +7,16 @@ module.exports = async (client, message) => {
 
   const settings = client.getGuildSettings(message.guild);
 
-  if (settings.messageDeleteUpdate !== "true") return;
-
   const logs = message.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
   const entry = await message.guild.fetchAuditLogs({type: 'MESSAGE_DELETE'}).then(audit => audit.entries.first())
   let user = ""
-    if (entry.extra.channel === message.channel
-      && (entry.target.id === message.author.id)
-      && (entry.createdTimestamp > (Date.now() - 5000))
-      && (entry.extra.count >= 1)) {
+  if (entry.createdTimestamp > (Date.now() - 5000)) {
+    // if (entry.extra.channel === message.channel
+    //   && (entry.target.id === message.author.id)
+    //   && (entry.createdTimestamp > (Date.now() - 5000))
+    //   && (entry.extra.count >= 1)) {
     user = entry.executor
   } else {
     user = message.author
@@ -32,5 +31,12 @@ module.exports = async (client, message) => {
      .setColor('#FF470F')
      .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
      .setTimestamp()
-     logs.send(deletedMessage);
+
+     if (settings.log_everything === "true") {
+         return logs.send(deletedMessage);
+       } else if (settings.messageDeleteUpdate === "true") {
+         return logs.send(deletedMessage);
+       } else {
+         return;
+       }
 };

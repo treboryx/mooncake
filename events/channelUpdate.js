@@ -5,12 +5,10 @@ module.exports = async (client, oldChannel, newChannel) => {
 
   const settings = client.getGuildSettings(oldChannel.guild);
 
-  if (settings.channelCreateDeleteUpdate !== "true") return;
-
   const logs = oldChannel.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
-  const entry = await oldChannel.guild.fetchAuditLogs({type: 'CHANNEL_CREATE'}).then(audit => audit.entries.first())
+  const entry = await oldChannel.guild.fetchAuditLogs({type: 'CHANNEL_UPDATE'}).then(audit => audit.entries.first())
   let user = ""
   if (entry.createdTimestamp > (Date.now() - 5000)) {
     user = entry.executor
@@ -22,11 +20,18 @@ module.exports = async (client, oldChannel, newChannel) => {
 
   const color = colors[Math.floor(Math.random() * colors.length)];
 
-  const channelCreated = new Discord.RichEmbed()
+  const channelUpdate = new Discord.RichEmbed()
      .setAuthor(`${oldChannel.guild.name}`, oldChannel.guild.iconURL)
      .setDescription(`❯ **Channel updated:** #${oldChannel.name} ==> ${newChannel}`)
      .setColor(color)
      .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
      .setTimestamp()
-     logs.send(channelCreated);
+
+  if (settings.log_everything === "true") {
+            return logs.send(channelUpdate);
+          } else if (settings.channelCreateDeleteUpdate === "true") {
+            return logs.send(channelUpdate);
+          } else {
+            return;
+          }
 };

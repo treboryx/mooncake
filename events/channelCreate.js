@@ -5,8 +5,6 @@ module.exports = async (client, channel) => {
 
   const settings = client.getGuildSettings(channel.guild);
 
-  if (settings.channelCreateDeleteUpdate !== "true") return;
-
   const logs = channel.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
@@ -26,5 +24,12 @@ module.exports = async (client, channel) => {
      .setColor("#23D160")
      .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
      .setTimestamp()
-     logs.send(channelCreated);
+
+  if (settings.log_everything === "true") {
+      return logs.send(channelCreated);
+    } else if (settings.channelCreateDeleteUpdate === "true") {
+      return logs.send(channelCreated);
+    } else {
+      return;
+    }
 };

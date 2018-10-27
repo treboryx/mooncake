@@ -3,10 +3,7 @@ const colors = require('../assets/colorsrandom.json')
 
 module.exports = (client, member) => {
 
-
   const settings = member.client.getGuildSettings(member.guild);
-
-  if (settings.guildMemberAddRemoveUpdate !== "true") return;
 
   const logs = member.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
@@ -19,5 +16,12 @@ module.exports = (client, member) => {
     .setDescription(`${member.user} ${member.user.tag}`)
     .setFooter(`ID: ${member.id}`)
     .setTimestamp()
-    return logs.send(memberLeft);
+
+if (settings.log_everything === "true") {
+          logs.send(memberLeft);
+        } else if (settings.guildMemberAddRemoveUpdate === "true") {
+          logs.send(memberLeft);
+        } else {
+          return;
+        }
 };

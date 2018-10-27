@@ -7,12 +7,10 @@ module.exports = async (client, oldMember, newMember) => {
 
   const settings = oldMember.client.getGuildSettings(oldMember.guild);
 
-  if (settings.guildMemberAddRemoveUpdate !== "true") return;
-
   const logs = newMember.guild.channels.find(channel => channel.name === settings.logs_channel);
   if(!logs) return;
 
-  const entry = await oldMember.guild.fetchAuditLogs({type: 'MANAGE_ROLES'}).then(audit => audit.entries.first())
+  const entry = await oldMember.guild.fetchAuditLogs({type: 'MEMBER_UPDATE'}).then(audit => audit.entries.first())
   let user = ""
     // if (entry.extra.channel.id === oldMember.channel.id
       // if (entry.target.id === entry.author.id
@@ -37,7 +35,13 @@ module.exports = async (client, oldMember, newMember) => {
        .addField(`After:`, newMember.roles.map(e => e).join(','))
        .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
        .setTimestamp()
-       logs.send(memberUpdated);
+    if (settings.log_everything === "true") {
+             logs.send(memberUpdated);
+           } else if (settings.guildMemberAddRemoveUpdate === "true") {
+             logs.send(memberUpdated);
+           } else {
+             return;
+           }
   } else {
 
     if(oldMember.nickname !== newMember.nickname) {
@@ -49,8 +53,13 @@ module.exports = async (client, oldMember, newMember) => {
            .setColor(newMember.displayHexColor)
            .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
            .setTimestamp()
-
-           logs.send(memberUpdated);
+           if (settings.log_everything === "true") {
+                    logs.send(memberUpdated);
+                  } else if (settings.guildMemberAddRemoveUpdate === "true") {
+                    logs.send(memberUpdated);
+                  } else {
+                    return;
+                  }
       } else if(newMember.nickname === null) {
 
             const memberUpdated = new Discord.RichEmbed()
@@ -60,7 +69,13 @@ module.exports = async (client, oldMember, newMember) => {
            .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
            .setTimestamp()
 
-           logs.send(memberUpdated);
+           if (settings.log_everything === "true") {
+                    logs.send(memberUpdated);
+                  } else if (settings.guildMemberAddRemoveUpdate === "true") {
+                    logs.send(memberUpdated);
+                  } else {
+                    return;
+                  }
 
       } else {
 
@@ -71,7 +86,13 @@ module.exports = async (client, oldMember, newMember) => {
            .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
            .setTimestamp()
 
-           logs.send(memberUpdated);
+           if (settings.log_everything === "true") {
+                    logs.send(memberUpdated);
+                  } else if (settings.guildMemberAddRemoveUpdate === "true") {
+                    logs.send(memberUpdated);
+                  } else {
+                    return;
+                  }
       }
 
     }
