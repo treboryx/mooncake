@@ -4,7 +4,10 @@ exports.run = async function(client, message, args) {
   try {
     if (!message.content.endsWith('?')) return message.reply('That does not look like a question, (hint, end your question with a `?`.)');
     if (!args) return message.reply('You need to actually ask a question...');
+    message.channel.startTyping();
+    await client.wait(1000);
     const msg = await message.channel.send('`Thinking...`');
+    await client.wait(1000);
     setTimeout( async () => {
       await msg.edit(`${answers[Math.floor(Math.random() * answers.length)]}`);
     }, Math.random() * (1 - 5) + 1 * 2000);
@@ -12,7 +15,7 @@ exports.run = async function(client, message, args) {
     throw error;
   }
 
-
+  message.channel.stopTyping({force:true});
 };
 
 exports.conf = {

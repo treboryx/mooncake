@@ -2,23 +2,26 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 
 const autoResponder = {
-  "spongebob": {
+  ";spongebob": {
             file: ""
           },
-  "oof": {
+  ";oof": {
             file: "https://cdn.discordapp.com/attachments/473899818847305738/473899836333359134/oof.png"
           },
-  "devin": "daddy?",
-  "spock": {
+  ";devin": "daddy?",
+  ";spock": {
     file: "https://cdn.discordapp.com/attachments/275732552797519873/475936918027239425/Z.png"
   },
-  "mock": {
+  ";mock": {
     file: "https://cdn.discordapp.com/attachments/458751527407058954/473641693883924481/mock.png"
-  }
-  ,
-  "kthnx": {
+  },
+  ";kthnx": {
     file: "https://cdn.discordapp.com/emojis/505062425121390592.gif"
-  }
+  },
+  ";yeehaw2": {
+    file: "https://i.imgur.com/sZx1SD0.png"
+  },
+  ";yeehaw": "yeehaw :cowboy:"
 };
 
 exports.autoResponder = autoResponder;
