@@ -13,6 +13,7 @@
     "enmap": "^3.1.4",
     "enmap-level": "^2.1.0",
     "exec": "^0.2.1",
+    "fortnite-api": "^2.14.0",
     "fs": "0.0.1-security",
     "gifencoder": "^1.1.0",
     "jimp": "^0.5.0",
@@ -31,7 +32,9 @@
   },
   "nodemonConfig": {
     "ignore": [
-      "data/*", "build/*", "stuff/*"
+      "data/*",
+      "build/*",
+      "stuff/*"
     ]
   },
   "devDependencies": {},
