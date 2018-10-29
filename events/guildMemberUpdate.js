@@ -11,7 +11,7 @@ module.exports = async (client, oldMember, newMember) => {
 
   const entry = await oldMember.guild.fetchAuditLogs({type: 'MEMBER_UPDATE'}).then(audit => audit.entries.first())
   let user = entry.executor
-  
+
   const entryRoles = await oldMember.guild.fetchAuditLogs({type: 'MEMBER_ROLE_UPDATE'}).then(audit => audit.entries.first())
   let userRoles = entryRoles.executor
     // if (entry.extra.channel.id === oldMember.channel.id
@@ -29,6 +29,41 @@ module.exports = async (client, oldMember, newMember) => {
 
   if(oldMember.roles !== newMember.roles && (oldMember.nickname === newMember.nickname)) {
 
+    let addedR = newMember.roles.filter(r => !oldMember.roles.has(r.id)).first()
+    let removedR = oldMember.roles.filter(r => !newMember.roles.has(r.id)).first()
+    if (oldMember.roles.size !== newMember.roles.size) {
+        if (oldMember.roles.size > newMember.roles.size) {
+          let removedRole = removedR.name;
+          const embed = new Discord.RichEmbed()
+          .setAuthor("Member Updated", newMember.avatarURL)
+          .setDescription(`${newMember} removed from ${removedR}`)
+          .setColor(newMember.displayHexColor)
+          .setFooter(`By ${userRoles.username}#${userRoles.discriminator}`, userRoles.avatarURL)
+          .setTimestamp()
+          if (settings.log_everything === "true") {
+                   return logs.send(embed);
+                 } else if (settings.guildMemberAddRemoveUpdate === "true") {
+                   return logs.send(embed);
+                 } else {
+                   return;
+                 }
+        } else if (oldMember.roles.size < newMember.roles.size) {
+          let addedRole = addedR.name;
+          const embed = new Discord.RichEmbed()
+          .setAuthor("Member Updated", newMember.avatarURL)
+          .setDescription(`${newMember} added to ${addedR}`)
+          .setColor(newMember.displayHexColor)
+          .setFooter(`By ${userRoles.username}#${userRoles.discriminator}`, userRoles.avatarURL)
+          .setTimestamp()
+          if (settings.log_everything === "true") {
+                   return logs.send(embed);
+                 } else if (settings.guildMemberAddRemoveUpdate === "true") {
+                   return logs.send(embed);
+                 } else {
+                   return;
+                 }
+        }
+}
         const memberUpdated = new Discord.RichEmbed()
        .setAuthor("Member Updated", newMember.avatarURL)
        .setDescription(`${newMember}`)
@@ -38,9 +73,9 @@ module.exports = async (client, oldMember, newMember) => {
        .setFooter(`By ${userRoles.username}#${userRoles.discriminator}`, userRoles.avatarURL)
        .setTimestamp()
     if (settings.log_everything === "true") {
-             logs.send(memberUpdated);
+             return logs.send(memberUpdated);
            } else if (settings.guildMemberAddRemoveUpdate === "true") {
-             logs.send(memberUpdated);
+             return logs.send(memberUpdated);
            } else {
              return;
            }
