@@ -30,11 +30,11 @@ exports.run = (client, message, [type, page], level) => {
       if (client.commands.has(type)) {
         const cm = client.commands.get(type) || client.commands.get(client.aliases.get(type));
         if (level < client.levelCache[cm.permLevel]) return;
-        embed.setTitle(cm.name.toProperCase())
-          .addField("Command description", cm.description)
-          .addField("Command usage", `\`${cm.usage}\``)
-          .addField("Command aliases", cm.aliases.length === 0 ? "None" : cm.aliases.join(", ") )
-          .addField("Extended description", cm.extended);
+        embed.setTitle(cm.help.name.toProperCase())
+          .addField("Command description", cm.help.description)
+          .addField("Command usage", `\`${cm.help.usage}\``)
+          .addField("Command aliases", cm.conf.aliases.length === 0 ? "None" : cm.conf.aliases.join(", ") )
+          // .addField("Extended description", cm.help.extended);
 
       } else {
         let n = 0;
@@ -49,7 +49,7 @@ exports.run = (client, message, [type, page], level) => {
           if (c.help.category.toLowerCase() === type) {
             if (num < perpage * pg && num > perpage * pg - (perpage + 1)) {
               if (level < client.levelCache[c.permLevel]) continue;
-              if (c.help.category === "Owner" && !message.channel.nsfw && level < 10) return message.reply("You can't access this!");
+              if (c.help.category === "Owner" && !message.channel.nsfw && level < 10) continue;
               output += `\n\`${message.settings.prefix + c.help.name}\` | ${c.help.description.length > 50 ? c.help.description.slice(0,50) +"...": c.help.description}`;
             }
             num++;
@@ -58,7 +58,7 @@ exports.run = (client, message, [type, page], level) => {
 
         if (!num) return;
         embed.setTitle("Command category help")
-          .setDescription(`A list of commands in the ${type} category.\n(Total of ${num} commands in this category)\n\nTo get help on a specific command do \`${message.settings.prefix}help <command>\`\n\n${num > 10 && pg === 1 ? `To view more commands do\` ${message.settings.prefix}help <category> 2\`` : "" }`)
+          .setDescription(`A list of commands in the ${type} category.\n(Total of ${num} commands in this category)\n\nTo get help on a specific command do \`${message.settings.prefix}ohelp <command>\`\n\n${num > 10 && pg === 1 ? `To view more commands do\` ${message.settings.prefix}help <category> 2\`` : "" }`)
           .addField("Commands", output);
 
       }
