@@ -34,7 +34,7 @@ exports.conf = {
 
 exports.help = {
   name: 'triggered',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'Triggered meme over user\'s avatar',
   usage: 'triggered [user]'
 };

@@ -1,5 +1,6 @@
 if (process.version.slice(1).split(".")[0] < 8) throw new Error("Node 8.0.0 or higher is required. Update Node on your system.");
 
+const { Client, Collection } = require('discord.js');
 const Discord = require("discord.js");
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir);
@@ -17,6 +18,8 @@ require("./modules/functions.js")(client);
 client.playlists = new Enmap();
 client.commands = new Enmap();
 client.aliases = new Enmap();
+client.commands = new Collection();
+client.aliases = new Collection();
 
 // client.gblacklist = new Enmap({name: "gblacklist", persistent: true });
 client.settings = new Enmap({provider: new EnmapLevel({name: "settings", persistent: true})});

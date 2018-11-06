@@ -13,7 +13,7 @@ exports.conf = {
 
 exports.help = {
   name: 'lenny',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Lenny face',
   usage: 'lenny'
 };

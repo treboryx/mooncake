@@ -22,7 +22,7 @@ exports.conf = {
 
 exports.help = {
   name: 'roast',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'roast a user',
   usage: 'roast [user]'
 };

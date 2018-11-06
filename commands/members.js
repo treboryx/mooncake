@@ -15,7 +15,7 @@ exports.conf = {
 
 exports.help = {
   name: 'members',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Guild member count',
   usage: 'members'
 };

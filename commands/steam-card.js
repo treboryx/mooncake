@@ -47,7 +47,7 @@ exports.conf = {
 
 exports.help = {
   name: 'steamcard',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'User is now playing, like on steam.',
   usage: 'steamcard [game] [user]'
 };

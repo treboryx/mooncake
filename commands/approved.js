@@ -31,7 +31,7 @@ exports.conf = {
 
 exports.help = {
   name: 'approved',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'Approved stamp over user\'s avatar',
   usage: 'approved [user]'
 };

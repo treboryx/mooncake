@@ -16,7 +16,7 @@ exports.conf = {
 
 exports.help = {
   name: 'emojis',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Returns all custom emojis in the guild',
   usage: 'emojis'
 };

@@ -17,7 +17,7 @@ exports.conf = {
 
 exports.help = {
   name: 'time',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Tells the time.',
   usage: 'time'
 };

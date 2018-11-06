@@ -37,7 +37,7 @@ exports.conf = {
 
 exports.help = {
   name: 'asktrump',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'Ask Trump something.',
   usage: 'asktrump'
 };

@@ -34,7 +34,7 @@ exports.conf = {
 
 exports.help = {
   name: 'today',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Returns with an event that happened today in history',
   usage: 'today'
 };

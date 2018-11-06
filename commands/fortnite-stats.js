@@ -57,7 +57,7 @@ exports.conf = {
 
 exports.help = {
   name: 'fortnite',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Returns Fortnite stats',
   usage: 'fortnite [pc/xb1/psn] [username]'
 };

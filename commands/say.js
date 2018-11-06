@@ -21,7 +21,7 @@ exports.conf = {
 
 exports.help = {
   name: 'say',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Make the bot your b*tch',
   usage: 'say'
 };

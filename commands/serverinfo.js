@@ -40,7 +40,7 @@ exports.conf = {
 
 exports.help = {
   name: 'server',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Shows information about the server',
   usage: 'server'
 };

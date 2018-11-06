@@ -49,7 +49,7 @@ exports.conf = {
 
 exports.help = {
   name: 'whois',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'shows info about a member',
   usage: 'whois [name]'
 };

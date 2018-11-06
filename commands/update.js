@@ -52,7 +52,7 @@ exports.conf = {
 
 exports.help = {
   name: "update",
-  category: "System",
+  category: "Owner",
   description: "Pulls the latest update and restarts.",
   usage: "update"
 };

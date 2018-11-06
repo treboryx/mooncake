@@ -92,7 +92,7 @@ exports.conf = {
 
 exports.help = {
   name: 'csgo',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Display CSGO Stats',
   usage: 'csgo [steamID]'
 };

@@ -24,7 +24,7 @@ exports.conf = {
 
 exports.help = {
   name: 'quote',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Returns a random quote',
   usage: 'quote'
 };

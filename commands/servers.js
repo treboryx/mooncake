@@ -12,7 +12,7 @@ exports.conf = {
 
 exports.help = {
   name: 'servers',
-  category: "System",
+  category: "Owner",
   description: 'List of all servers',
   usage: 'servers'
 };

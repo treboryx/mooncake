@@ -34,7 +34,7 @@ exports.conf = {
 
 exports.help = {
   name: 'reddit',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Posts link of a random post from a subreddit',
   usage: 'reddit [subreddit]'
 };

@@ -49,7 +49,7 @@ exports.conf = {
 
 exports.help = {
   name: 'steamplaying',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'User is now playing, like on steam.',
   usage: 'steamplaying [game] [user]'
 };

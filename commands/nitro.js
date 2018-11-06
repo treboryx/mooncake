@@ -26,7 +26,7 @@ exports.conf = {
 
 exports.help = {
   name: 'nitro',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'You must have Discord Nitro.',
   usage: 'nitro'
 };

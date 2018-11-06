@@ -27,7 +27,7 @@ exports.conf = {
 
 exports.help = {
   name: '8ball',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Answers a question',
   usage: '8ball'
 };

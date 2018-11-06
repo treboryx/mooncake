@@ -30,7 +30,7 @@ exports.conf = {
 
 exports.help = {
   name: 'tableflip',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'Does the tableflip animation.',
   usage: 'tableflip'
 };

@@ -5,12 +5,18 @@ const cooldown = new Set();
 exports.run = async function(client, message, args) {
 
   if (cooldown.has(message.author.id)) {
-       message.reply("Oops! Try again in 1 minute.")
+    const embed = new Discord.RichEmbed()
+    .setColor(0xD353EF)
+    .setDescription('Oops! Try again in 1 minute.')
+    message.channel.send(embed);
 } else {
 
   if(args.length === 0) return message.reply("Give me more details.")
   else {
-    message.reply("Thank you for your input!");
+    const embed = new Discord.RichEmbed()
+    .setColor(0xD353EF)
+    .setDescription('Thank you for your input!')
+    message.channel.send(embed);
   }
 
   var embed = new Discord.RichEmbed()
@@ -38,7 +44,7 @@ exports.conf = {
 
 exports.help = {
   name: 'feedback',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Report an issue, or suggest a feature.',
   usage: 'feedback'
 };

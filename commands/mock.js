@@ -21,7 +21,7 @@ exports.conf = {
 
 exports.help = {
   name: 'mock',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'Spongebob mock meme',
   usage: 'mock'
 };

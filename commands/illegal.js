@@ -42,7 +42,7 @@ exports.conf = {
 
 exports.help = {
   name: 'illegal',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'Trump illegal bill meme',
   usage: 'illegal'
 };

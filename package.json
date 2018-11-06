@@ -7,6 +7,7 @@
     "canvas": "^2.0.0-alpha.13",
     "chalk": "^2.4.1",
     "cheerio": "^1.0.0-rc.2",
+    "child_process": "^1.0.2",
     "common-tags": "^1.8.0",
     "custom-translate": "^2.2.4",
     "discord.js": "^11.4.2",

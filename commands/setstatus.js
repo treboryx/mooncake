@@ -17,7 +17,7 @@ exports.conf = {
 
 exports.help = {
   name: 'setstatus',
-  category: "System",
+  category: "Owner",
   description: "Sets the bot's status",
   usage: 'setstatus [online/idle/dnd/invisible]'
 };

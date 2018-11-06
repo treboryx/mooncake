@@ -19,7 +19,7 @@ exports.conf = {
 
 exports.help = {
   name: 'emojify',
-  category: "Miscellaneous",
+  category: "Misc",
   description: 'text to emoji letters',
   usage: 'emojify'
 };

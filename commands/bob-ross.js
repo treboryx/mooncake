@@ -44,7 +44,7 @@ exports.conf = {
 
 exports.help = {
   name: 'bobross',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'Puts user\'s avatar on Bob Ross\'s canvas',
   usage: 'bobross [user]'
 };

@@ -29,7 +29,7 @@ exports.conf = {
 
 exports.help = {
   name: 'achievement',
-	category: "Miscellaneous",
+	category: "Misc",
   description: 'Minecraft achievement',
   usage: 'achievement [text]'
 };

@@ -21,7 +21,7 @@ exports.conf = {
 
 exports.help = {
   name: 'globalprefix',
-  category: "System",
+  category: "Owner",
   description: "Changes the bot's global prefix.",
   usage: 'globalprefix'
 };
