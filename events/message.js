@@ -13,8 +13,10 @@ module.exports = (client, message) => {
 
   const settings = message.settings = client.getGuildSettings(message.guild);
 
-  if (message.content === 'prefix???')
-  message.channel.send("Prefix on this guild is `" + settings.prefix + "`");
+  const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
+  if (message.content.match(prefixMention)) {
+    return message.reply(`My prefix on this guild is \`${settings.prefix}\``);
+  }
 
   if (message.content.indexOf(settings.prefix) !== 0) return;
 
