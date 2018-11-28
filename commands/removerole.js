@@ -1,27 +1,27 @@
-const errors = require("../util/errors.js");
+const errors = require('../util/errors.js');
 
 exports.run = async function(client, message, args) {
 
-  if (!message.member.hasPermission("MANAGE_ROLES")) return errors.noPerms(message, "MANAGE_ROLES");
-  if(args[0] == "help" || args.length == 0){
+  if (!message.member.hasPermission('MANAGE_ROLES')) return errors.noPerms(message, 'MANAGE_ROLES');
+  if (args[0] == 'help' || args.length == 0) {
     message.reply(`Usage: ${message.settings.prefix}removerole <user> <role>`);
     return;
   }
-  let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
-  if(!rMember) return message.reply("Couldn't find that user, yo.");
-  let role = args.join(" ").slice(22);
-  if(!role) return message.reply("Specify a role!");
-  let gRole = message.guild.roles.find(`name`, role);
-  if(!gRole) return message.reply("Couldn't find that role.");
+  const rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+  if (!rMember) return message.reply('Couldn\'t find that user, yo.');
+  const role = args.join(' ').slice(22);
+  if (!role) return message.reply('Specify a role!');
+  const gRole = message.guild.roles.find('name', role);
+  if (!gRole) return message.reply('Couldn\'t find that role.');
 
-  if(!rMember.roles.has(gRole.id)) return message.reply("They don't have that role.");
+  if (!rMember.roles.has(gRole.id)) return message.reply('They don\'t have that role.');
   await(rMember.removeRole(gRole.id));
 
-  try{
-    await rMember.send(`RIP, you lost the ${gRole.name} role.`)
-  }catch(e){
-    message.channel.send(`RIP to <@${rMember.id}>, We removed ${gRole.name} from them. We tried to DM them, but their DMs are locked.`)
-}
+  try {
+    await rMember.send(`RIP, you lost the ${gRole.name} role.`);
+  } catch (e) {
+    message.channel.send(`RIP to <@${rMember.id}>, We removed ${gRole.name} from them. We tried to DM them, but their DMs are locked.`);
+  }
 
 
 };
@@ -30,12 +30,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ['rmrole', 'rmrole'],
-  permLevel: "Administrator"
+  permLevel: 'Administrator'
 };
 
 exports.help = {
   name: 'removerole',
-  category: "Moderation",
+  category: 'Moderation',
   description: 'remove role',
   usage: 'removerole [user] [role (case sensitive)]'
 };

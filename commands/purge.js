@@ -1,7 +1,7 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 
 exports.run = async function(client, message, args) {
-  if(message.member.hasPermission("ADMINISTRATOR")) {
+  if (message.member.hasPermission('ADMINISTRATOR')) {
 
     const deleteCount = parseInt(args.join(' '));
     message.channel.fetchMessages({
@@ -9,29 +9,29 @@ exports.run = async function(client, message, args) {
     }).then(messages => message.channel.bulkDelete(messages));
 
     const settings = client.getGuildSettings(message.guild);
-    let purgeChannel = message.guild.channels.find("name", settings.logs_channel);
-    if(!purgeChannel) return;
+    const purgeChannel = message.guild.channels.find('name', settings.logs_channel);
+    if (!purgeChannel) return;
 
-    let purgeEmbed = new Discord.RichEmbed()
-   .setTitle("Bulk Delete")
-   .setColor("FF0000")
-   .setDescription(`${deleteCount} messages deleted in ${message.channel}`)
-   .setTimestamp()
+    const purgeEmbed = new Discord.RichEmbed()
+      .setTitle('Bulk Delete')
+      .setColor('FF0000')
+      .setDescription(`${deleteCount} messages deleted in ${message.channel}`)
+      .setTimestamp();
 
-   purgeChannel.send(purgeEmbed);
-}
+    purgeChannel.send(purgeEmbed);
+  }
 };
 
 exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "Administrator"
+  permLevel: 'Administrator'
 };
 
 exports.help = {
   name: 'purge',
-  category: "Moderation",
+  category: 'Moderation',
   description: 'purges a desired number of messages, up to 100',
   usage: 'purge [number]'
 };

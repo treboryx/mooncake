@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const request = require('node-superfetch')
+const Discord = require('discord.js');
+const request = require('node-superfetch');
 
 exports.run = async function(client, message, args, { month, day }) {
   const date = month && day ? `/${month}/${day}` : '';
@@ -20,7 +20,7 @@ exports.run = async function(client, message, args, { month, day }) {
   } catch (err) {
     if (err.status === 404 || err.status === 500) return message.say('Invalid date.');
     return message.reply(`Oh no, an error occurred: \`${err.message}\`. Try again later!`);
-}
+  }
 
 
 };
@@ -29,12 +29,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "User"
+  permLevel: 'User'
 };
 
 exports.help = {
   name: 'today',
-  category: "Misc",
+  category: 'Misc',
   description: 'Returns with an event that happened today in history',
   usage: 'today'
 };

@@ -1,13 +1,13 @@
 const frames = [
-	'(-°□°)-  ┬─┬',
-	'(╯°□°)╯    ]',
-	'(╯°□°)╯  ︵  ┻━┻',
-	'(╯°□°)╯       [',
-	'(╯°□°)╯           ┬─┬'
+  '(-°□°)-  ┬─┬',
+  '(╯°□°)╯    ]',
+  '(╯°□°)╯  ︵  ┻━┻',
+  '(╯°□°)╯       [',
+  '(╯°□°)╯           ┬─┬'
 ];
 
 function delay(ms) {
-return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 exports.run = async function(client, message, args) {
@@ -25,12 +25,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "User"
+  permLevel: 'User'
 };
 
 exports.help = {
   name: 'tableflip',
-	category: "Misc",
+  category: 'Misc',
   description: 'Does the tableflip animation.',
   usage: 'tableflip'
 };

@@ -22,12 +22,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: ['8'],
-  permLevel: "User"
+  permLevel: 'User'
 };
 
 exports.help = {
   name: '8ball',
-  category: "Misc",
+  category: 'Misc',
   description: 'Answers a question',
   usage: '8ball'
 };
