@@ -38,9 +38,13 @@
       "stuff/*"
     ]
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "5.9.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint .",
+    "lint": "eslint --fix .",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
