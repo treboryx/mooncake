@@ -2,7 +2,7 @@ const request = require('node-superfetch');
 const { stripIndents } = require('common-tags');
 
 
-exports.run = async function(client, message, args) {
+exports.run = async function(client, message) {
   var args = message.content.split(/[ ]+/);
   try {
     const subReddit = args[1];

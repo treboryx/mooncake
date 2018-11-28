@@ -30,7 +30,7 @@ module.exports = async (client, oldGuild, newGuild) => {
 
   } else  if (oldGuild.name !== newGuild.name) {
 
-    var guildUpdated = new Discord.RichEmbed()
+    var guildUpdatedName = new Discord.RichEmbed()
       .setColor('0xD353EF')
       .setAuthor('Guild Updated',`${newGuild.iconURL}`)
       .setTitle('Name')
@@ -39,16 +39,16 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setTimestamp();
 
     if (settings.log_everything === 'true') {
-      return logs.send(guildUpdated);
+      return logs.send(guildUpdatedName);
     } else if (settings.guildUpdateBanAddRemove === 'true') {
-      return logs.send(guildUpdated);
+      return logs.send(guildUpdatedName);
     } else {
       return;
     }
 
   } else if (oldGuild.icon !== newGuild.icon) {
 
-    var guildUpdated = new Discord.RichEmbed()
+    var guildUpdatedIcon = new Discord.RichEmbed()
       .setColor('0xD353EF')
       .setAuthor('Guild Updated',`${newGuild.iconURL}`)
       .setTitle('Icon')
@@ -57,16 +57,16 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setTimestamp();
 
     if (settings.log_everything === 'true') {
-      return logs.send(guildUpdated);
+      return logs.send(guildUpdatedIcon);
     } else if (settings.guildUpdateBanAddRemove === 'true') {
-      return logs.send(guildUpdated);
+      return logs.send(guildUpdatedIcon);
     } else {
       return;
     }
 
   } else if (oldGuild.region !== newGuild.region) {
 
-    var guildUpdated = new Discord.RichEmbed()
+    var guildUpdatedRegion = new Discord.RichEmbed()
       .setColor('0xD353EF')
       .setAuthor('Guild Updated',`${newGuild.iconURL}`)
       .setTitle('Region')
@@ -75,24 +75,24 @@ module.exports = async (client, oldGuild, newGuild) => {
       .setTimestamp();
 
     if (settings.log_everything === 'true') {
-      return logs.send(guildUpdated);
+      return logs.send(guildUpdatedRegion);
     } else if (settings.guildUpdateBanAddRemove === 'true') {
-      return logs.send(guildUpdated);
+      return logs.send(guildUpdatedRegion);
     } else {
       return;
     }
 
   } else {
-    var guildUpdated = new Discord.RichEmbed()
+    var guildUpdatedIcon2 = new Discord.RichEmbed()
       .setColor('0xD353EF')
       .setAuthor('Guild Updated',`${newGuild.iconURL}`)
       .setFooter(`By ${userExec.username}#${userExec.discriminator}`, userExec.avatarURL)
       .setTimestamp();
 
     if (settings.log_everything === 'true') {
-      return logs.send(guildUpdated);
+      return logs.send(guildUpdatedIcon2);
     } else if (settings.guildUpdateBanAddRemove === 'true') {
-      return logs.send(guildUpdated);
+      return logs.send(guildUpdatedIcon2);
     } else {
       return;
     }

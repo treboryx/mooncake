@@ -1,7 +1,7 @@
 const { letterTrans } = require('custom-translate');
 const dictionary = require('../assets/emojify.json');
 
-exports.run = async function(client, message, args) {
+exports.run = async function(client, message) {
   var args = message.content.split(/[ ]+/);
   const textInput = args.join(' ').substring(8);
 

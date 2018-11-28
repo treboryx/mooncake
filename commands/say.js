@@ -1,4 +1,4 @@
-exports.run = function(client, message, args) {
+exports.run = function(client, message) {
   var args = message.content.split(/[ ]+/);
   if (message.member.hasPermission('ADMINISTRATOR')) {
     if (args.length === 1) {

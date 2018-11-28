@@ -12,10 +12,10 @@ function delay(ms) {
 
 exports.run = async function(client, message, args) {
   const flip = await message.channel.send('\\\\°□°)\\\\  ┬─┬');
-  		for (const frame of frames) {
-  			await delay(200);
-  			await flip.edit(frame);
-  		}
+  for (const frame of frames) {
+    await delay(200);
+    await flip.edit(frame);
+  }
   return message;
 
 
