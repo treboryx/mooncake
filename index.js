@@ -1,5 +1,8 @@
 if (process.version.slice(1).split('.')[0] < 8) throw new Error('Node 8.0.0 or higher is required. Update Node on your system.');
 
+const Sentry = require('@sentry/node');
+Sentry.init({ dsn: 'https://8370fbe78f8642ec8a22888d341ad3c2@sentry.io/1334486' });
+
 const { Client, Collection } = require('discord.js');
 const Discord = require('discord.js');
 const { promisify } = require('util');

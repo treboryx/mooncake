@@ -4,6 +4,7 @@
   "description": "k3 discord.js bot",
   "main": "index.js",
   "dependencies": {
+    "@sentry/node": "^4.4.1",
     "canvas": "^2.0.0-alpha.13",
     "chalk": "^2.4.1",
     "cheerio": "^1.0.0-rc.2",
