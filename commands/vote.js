@@ -1,9 +1,10 @@
 const Discord = require('discord.js');
 
 exports.run = async function(client, message, args) {
+  if (!args) return message.author.send('You can\'t create an empty poll')
   message.delete();
   const embed = new Discord.RichEmbed()
-    .setAuthor('POLL', message.guild.iconURL)
+    .setAuthor(`POLL Started by ${message.author.tag}`, message.author.avatarURL)
     .setColor('RANDOM')
     .setDescription(`${args.join(' ')}`)
     .setFooter('React with 👍 if you agree or 👎 if you don\'t');
@@ -15,7 +16,7 @@ exports.run = async function(client, message, args) {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: [],
+  aliases: ['poll'],
   permLevel: 'User'
 };
 
