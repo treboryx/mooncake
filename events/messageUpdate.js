@@ -25,7 +25,7 @@ module.exports = async (client, message, newMsg) => {
   if (settings.log_everything === 'true') {
     return logs.send(editedMessage);
   } else if (settings.messageDeleteUpdate === 'true') {
-    return logs.send(editeddMessage);
+    return logs.send(editedMessage);
   } else {
     return;
   }
