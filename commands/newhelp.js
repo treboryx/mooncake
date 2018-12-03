@@ -16,7 +16,7 @@ exports.run = (client, message, [type, page], level) => {
 
   if (!type) {
     const description = `Command category list\n\nUse \`${message.settings.prefix}help <category>\` to find commands for a specific category`;
-    const output = sorted.filter(c => !(level < 10 && c.help.category === 'Owner') || !(c.help.category === 'NSFW' && !message.channel.nsfw)).map(c => {
+    const output = sorted.filter(c => !(level < 10 && c.help.category === 'Owner') || (c.help.category === 'NSFW' && !message.channel.nsfw)).map(c => {
       const cat = c.help.category.toProperCase();
       if (currentCategory !== cat && !type) {
         currentCategory = cat;

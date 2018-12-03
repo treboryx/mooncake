@@ -11,7 +11,7 @@ exports.run = async function(client, message, args) {
     return;
   }
   const tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if (!tomute) return message.reply('You didn\'t mentioned a user');
+  if (!tomute) return message.reply('You didn\'t mention a user');
 
   const muterole = message.guild.roles.find(role => role.name === 'muted');
 

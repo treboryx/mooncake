@@ -5,13 +5,11 @@ exports.run = async function(client, message, args) {
   const embed = new Discord.RichEmbed()
     .setAuthor('POLL', message.guild.iconURL)
     .setColor('RANDOM')
-    .setDescription(args)
+    .setDescription(`${args.join(' ')}`)
     .setFooter('React with 👍 if you agree or 👎 if you don\'t');
   const m = await message.channel.send(embed);
   message.channel.fetchMessage(m).then(msg => msg.react('👍'));
   message.channel.fetchMessage(m).then(msg => msg.react('👎'));
-
-
 };
 
 exports.conf = {
