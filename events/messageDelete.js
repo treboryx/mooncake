@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const colors = require('../assets/colorsrandom.json');
 
 module.exports = async (client, message) => {
+  if (!message) return;
 
   if (message.author.bot) return;
 

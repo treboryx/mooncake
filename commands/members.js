@@ -1,7 +1,7 @@
 const check = require('../util/functions.js');
 
 exports.run = async function(client, message, args) {
-  message.channel.send(`This discord server has ${check.checkMembers(message.guild)} members and ${check.checkBots(message.guild)} bots.`);
+  message.channel.send(`This discord server has ${guild.members.filter(member => !member.user.bot).size} members and ${check.checkBots(message.guild)} bots.`);
 
 
 };
