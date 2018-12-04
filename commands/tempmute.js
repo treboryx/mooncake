@@ -59,7 +59,7 @@ exports.run = async function(client, message, args) {
       .addField('Muted in:', message.channel)
       .addField('Mute time:', mutetime)
       .addField('Reason', 'No reason provided')
-      .setFooter(`By ${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+      .setFooter(`By ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp();
     incidentschannel.send(muteembed);
 
@@ -70,7 +70,7 @@ exports.run = async function(client, message, args) {
       .addField('Muted in:', message.channel)
       .addField('Mute time:', mutetime)
       .addField('Reason', reason)
-      .setFooter(`By ${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
+      .setFooter(`By ${message.author.tag}`, message.author.avatarURL)
       .setTimestamp();
     incidentschannel.send(muteembed);
   }
