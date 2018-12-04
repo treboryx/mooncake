@@ -1,21 +1,21 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 const client = new Discord.Client();
 const embed = new Discord.RichEmbed();
-const embedCheck = require('../modules/embedPerms.js');
-const playNext = require('../modules/playNext.js');
-const ytapi = require('simple-youtube-api');
-const { parse } = require('url');
-client.config = require('../config.js');
+const embedCheck = require("../modules/embedPerms.js");
+const playNext = require("../modules/playNext.js");
+const ytapi = require("simple-youtube-api");
+const { parse } = require("url");
+client.config = require("../config.js");
 const youtube = new ytapi(client.config.youtubeAPIKey);
 
 
 exports.run = async (client, message, params) => {
-  const song = params.join(' ');
-  if (!song.length) return message.reply('You need to supply a YouTube URL or a search term!');
+  const song = params.join(" ");
+  if (!song.length) return message.reply("You need to supply a YouTube URL or a search term!");
 
   const voiceChannel = message.member.voiceChannel ? message.member.voiceChannel : (message.guild.voiceConnection ? message.guild.voiceConnection.channel : null);
   if (!voiceChannel || (!message.member.voiceChannel)) {
-    return message.reply('You have to be in a voice channel first!');
+    return message.reply("You have to be in a voice channel first!");
   }
 
   if (!client.playlists.has(message.guild.id)) {
@@ -55,7 +55,7 @@ exports.run = async (client, message, params) => {
 
   let seconds = time % 60;
 
-  if (seconds < 10) seconds = '0' + seconds;
+  if (seconds < 10) seconds = "0" + seconds;
   client.playlists.get(message.guild.id).queue.push({
     url: `https://www.youtube.com/watch?v=${info.id}`,
     id: info.id,
@@ -89,12 +89,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 'User'
+  permLevel: "User"
 };
 
 exports.help = {
-  name: 'play',
-  category: 'Music',
-  description: 'Play a song from YouTube.',
-  usage: 'play [YouTube URL or Search Term]'
+  name: "play",
+  category: "Music",
+  description: "Play a song from YouTube.",
+  usage: "play [YouTube URL or Search Term]"
 };

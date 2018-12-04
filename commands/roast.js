@@ -1,8 +1,8 @@
-const roasts = require('../assets/roast.json');
+const roasts = require("../assets/roast.json");
 
 exports.run = async function(client, message, args) {
 
-  if (args[0] == 'help' || args.length == 0) {
+  if (args[0] == "help" || args.length == 0) {
     message.reply(`\`\`\`css\nUsage: ${message.settings.prefix}roast <user>\n\`\`\``);
     return;
   }
@@ -17,12 +17,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 'User'
+  permLevel: "User"
 };
 
 exports.help = {
-  name: 'roast',
-  category: 'Misc',
-  description: 'roast a user',
-  usage: 'roast [user]'
+  name: "roast",
+  category: "Misc",
+  description: "roast a user",
+  usage: "roast [user]"
 };

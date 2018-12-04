@@ -1,17 +1,22 @@
 // client, other, args
-const data = require('../util/functions.js');
+const data = require("../util/functions.js");
+const monitor = require("../modules/monitor.js");
 
 module.exports = (client, message) => {
 
   if (message.author.bot) return;
+  const settings = message.settings = client.getGuildSettings(message.guild);
 
+  const blacklist = client.blacklist;
+  if (blacklist.has(message.author.id)) return;
 
+  const level = client.permlevel(message);
+
+  monitor.run(client, message, level);
 
   if (data.autoResponder[message.content]) {
     message.channel.send(data.autoResponder[message.content]);
   }
-
-  const settings = message.settings = client.getGuildSettings(message.guild);
 
   const prefixMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
   if (message.content.match(prefixMention)) {
@@ -23,16 +28,16 @@ module.exports = (client, message) => {
   const args = message.content.slice(settings.prefix.length).trim().split(/ +/g);
   const command = args.shift().toLowerCase();
 
-  const level = client.permlevel(message);
+
 
   const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
   if (!cmd) return;
 
   if (cmd && !message.guild && cmd.conf.guildOnly)
-    return message.channel.send('This command is unavailable via private message. Please run this command in a guild.');
+    return message.channel.send("This command is unavailable via private message. Please run this command in a guild.");
 
   if (level < client.levelCache[cmd.conf.permLevel]) {
-    if (settings.system_notice === 'true') {
+    if (settings.system_notice === "true") {
       return message.channel.send(`You do not have permission to use this command.
   Your permission level is ${level} (${client.config.permLevels.find(l => l.level === level).name})
   This command requires level ${client.levelCache[cmd.conf.permLevel]} (${cmd.conf.permLevel})`);
@@ -44,7 +49,7 @@ module.exports = (client, message) => {
   message.author.permLevel = level;
 
   message.flags = [];
-  while (args[0] && args[0][0] === '-') {
+  while (args[0] && args[0][0] === "-") {
     message.flags.push(args.shift().slice(1));
   }
 

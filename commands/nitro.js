@@ -1,11 +1,11 @@
-const Discord = require('discord.js');
-const { stripIndents } = require('common-tags');
+const Discord = require("discord.js");
+const { stripIndents } = require("common-tags");
 
 exports.run = async function(client, message, args) {
   message.delete();
   const embed = new Discord.RichEmbed()
-    .setAuthor('Discord Nitro', 'https://i.imgur.com/DKaY8fV.jpg', 'https://discordapp.com/nitro')
-    .setThumbnail('https://i.imgur.com/DKaY8fV.jpg')
+    .setAuthor("Discord Nitro", "https://i.imgur.com/DKaY8fV.jpg", "https://discordapp.com/nitro")
+    .setThumbnail("https://i.imgur.com/DKaY8fV.jpg")
     .setColor(0x8395D3)
     .setTimestamp()
     .setDescription(stripIndents`
@@ -21,12 +21,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 'User'
+  permLevel: "User"
 };
 
 exports.help = {
-  name: 'nitro',
-  category: 'Misc',
-  description: 'You must have Discord Nitro.',
-  usage: 'nitro'
+  name: "nitro",
+  category: "Misc",
+  description: "You must have Discord Nitro.",
+  usage: "nitro"
 };

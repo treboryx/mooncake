@@ -22,7 +22,7 @@
     ],
     "quotes": [
       "warn",
-      "single"
+      "double"
     ],
     "semi": [
       "warn",

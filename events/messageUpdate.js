@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const colors = require('../assets/colorsrandom.json');
+const Discord = require("discord.js");
+const colors = require("../assets/colorsrandom.json");
 
 module.exports = async (client, message, newMsg) => {
 
@@ -14,17 +14,17 @@ module.exports = async (client, message, newMsg) => {
   const color = colors[Math.floor(Math.random() * colors.length)];
 
   const editedMessage = new Discord.RichEmbed()
-    .setTitle('Message Edited')
+    .setTitle("Message Edited")
     .setDescription(`Message sent by ${message.author} edited in ${message.channel}\n\n`)
-    .addField('Old Message:', '`' + message.content + '`')
-    .addField('New Message:', '`' + newMsg.content + '`')
+    .addField("Old Message:", "`" + message.content + "`")
+    .addField("New Message:", "`" + newMsg.content + "`")
     .setColor(color)
     .setFooter(`ID: ${message.id}`)
     .setTimestamp();
 
-  if (settings.log_everything === 'true') {
+  if (settings.log_everything === "true") {
     return logs.send(editedMessage);
-  } else if (settings.messageDeleteUpdate === 'true') {
+  } else if (settings.messageDeleteUpdate === "true") {
     return logs.send(editedMessage);
   } else {
     return;

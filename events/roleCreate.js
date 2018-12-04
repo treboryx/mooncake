@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
 
 module.exports = async (client, role) => {
 
@@ -7,7 +7,7 @@ module.exports = async (client, role) => {
   const logs = role.guild.channels.find(channel => channel.name === settings.logs_channel);
   if (!logs) return;
 
-  const entry = await role.guild.fetchAuditLogs({type: 'ROLE_CREATE'}).then(audit => audit.entries.first());
+  const entry = await role.guild.fetchAuditLogs({type: "ROLE_CREATE"}).then(audit => audit.entries.first());
   const user = entry.executor;
 
   var roleCreated = new Discord.RichEmbed()
@@ -17,9 +17,9 @@ module.exports = async (client, role) => {
     .setFooter(`ID: ${role.id}`)
     .setTimestamp();
 
-  if (settings.log_everything === 'true') {
+  if (settings.log_everything === "true") {
     return logs.send(roleCreated);
-  } else if (settings.roleCreateDeleteUpdate === 'true') {
+  } else if (settings.roleCreateDeleteUpdate === "true") {
     return logs.send(roleCreated);
   } else {
     return;

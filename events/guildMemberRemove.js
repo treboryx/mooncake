@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const colors = require('../assets/colorsrandom.json');
+const Discord = require("discord.js");
+const colors = require("../assets/colorsrandom.json");
 
 module.exports = (client, member) => {
 
@@ -11,15 +11,15 @@ module.exports = (client, member) => {
   const color = colors[Math.floor(Math.random() * colors.length)];
 
   var memberLeft = new Discord.RichEmbed()
-    .setColor('#FF470F')
-    .setAuthor('Member left',`${member.user.displayAvatarURL}`)
+    .setColor("#FF470F")
+    .setAuthor("Member left",`${member.user.displayAvatarURL}`)
     .setDescription(`${member.user} ${member.user.tag}`)
     .setFooter(`ID: ${member.id}`)
     .setTimestamp();
 
-  if (settings.log_everything === 'true') {
+  if (settings.log_everything === "true") {
     logs.send(memberLeft);
-  } else if (settings.guildMemberAddRemoveUpdate === 'true') {
+  } else if (settings.guildMemberAddRemoveUpdate === "true") {
     logs.send(memberLeft);
   } else {
     return;

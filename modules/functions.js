@@ -33,7 +33,7 @@ module.exports = (client) => {
     const filter = m => m.author.id === msg.author.id;
     await msg.channel.send(question);
     try {
-      const collected = await msg.channel.awaitMessages(filter, { max: 1, time: limit, errors: ['time'] });
+      const collected = await msg.channel.awaitMessages(filter, { max: 1, time: limit, errors: ["time"] });
       return collected.first().content;
     } catch (e) {
       return false;
@@ -42,15 +42,15 @@ module.exports = (client) => {
 
 
   client.clean = async (client, text) => {
-    if (text && text.constructor.name == 'Promise')
+    if (text && text.constructor.name == "Promise")
       text = await text;
-    if (typeof evaled !== 'string')
-      text = require('util').inspect(text, {depth: 1});
+    if (typeof evaled !== "string")
+      text = require("util").inspect(text, {depth: 1});
 
     text = text
-      .replace(/`/g, '`' + String.fromCharCode(8203))
-      .replace(/@/g, '@' + String.fromCharCode(8203))
-      .replace(client.token, 'mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0');
+      .replace(/`/g, "`" + String.fromCharCode(8203))
+      .replace(/@/g, "@" + String.fromCharCode(8203))
+      .replace(client.token, "mfa.VkO_2G4Qv3T--NO--lWetW_tjND--TOKEN--QFTm6YGtzq9PH--4U--tG0");
 
     return text;
   };
@@ -100,16 +100,16 @@ module.exports = (client) => {
   };
 
   // `await client.wait(1000);` to "pause" for 1 second.
-  client.wait = require('util').promisify(setTimeout);
+  client.wait = require("util").promisify(setTimeout);
 
   // These 2 process methods will catch exceptions and give *more details* about the error and stack trace.
-  process.on('uncaughtException', (err) => {
-    const errorMsg = err.stack.replace(new RegExp(`${__dirname}/`, 'g'), './');
+  process.on("uncaughtException", (err) => {
+    const errorMsg = err.stack.replace(new RegExp(`${__dirname}/`, "g"), "./");
     client.logger.error(`Uncaught Exception: ${errorMsg}`);
     process.exit(1);
   });
 
-  process.on('unhandledRejection', err => {
+  process.on("unhandledRejection", err => {
     client.logger.error(`Unhandled rejection: ${err}`);
   });
 };

@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const colors = require('../assets/colorsrandom.json');
+const Discord = require("discord.js");
+const colors = require("../assets/colorsrandom.json");
 
 module.exports = async (client, channel) => {
 
@@ -8,8 +8,8 @@ module.exports = async (client, channel) => {
   const logs = channel.guild.channels.find(channel => channel.name === settings.logs_channel);
   if (!logs) return;
 
-  const entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_DELETE'}).then(audit => audit.entries.first());
-  let user = '';
+  const entry = await channel.guild.fetchAuditLogs({type: "CHANNEL_DELETE"}).then(audit => audit.entries.first());
+  let user = "";
   if (entry.createdTimestamp > (Date.now() - 5000)) {
     user = entry.executor;
   } else {
@@ -21,13 +21,13 @@ module.exports = async (client, channel) => {
   const channelDeleted = new Discord.RichEmbed()
     .setAuthor(`${channel.guild.name}`, channel.guild.iconURL)
     .setDescription(`❯ **Channel deleted: ${channel}\n❯ Type: ${channel.type}**`)
-    .setColor('#FF470F')
+    .setColor("#FF470F")
     .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
     .setTimestamp();
 
-  if (settings.log_everything === 'true') {
+  if (settings.log_everything === "true") {
     return logs.send(channelDeleted);
-  } else if (settings.channelCreateDeleteUpdate === 'true') {
+  } else if (settings.channelCreateDeleteUpdate === "true") {
     return logs.send(channelDeleted);
   } else {
     return;

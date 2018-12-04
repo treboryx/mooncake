@@ -1,4 +1,4 @@
-const jokes = require('../assets/jokes.json');
+const jokes = require("../assets/jokes.json");
 
 exports.run = async function(client, message, args) {
   const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
@@ -11,12 +11,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 'User'
+  permLevel: "User"
 };
 
 exports.help = {
-  name: 'joke',
-  category: 'Misc',
-  description: 'Returns a random joke',
-  usage: 'joke'
+  name: "joke",
+  category: "Misc",
+  description: "Returns a random joke",
+  usage: "joke"
 };

@@ -7,12 +7,12 @@ exports.conf = {
   enabled: true,
   guildOnly: true,
   aliases: [],
-  permLevel: 'User'
+  permLevel: "User"
 };
 
 exports.help = {
-  name: 'mylevel',
-  category: 'System',
-  description: 'Tells you your permission level for the current message location.',
-  usage: 'mylevel'
+  name: "mylevel",
+  category: "System",
+  description: "Tells you your permission level for the current message location.",
+  usage: "mylevel"
 };

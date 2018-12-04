@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@sentry/node": "^4.4.1",
+    "better-sqlite-pool": "github:eslachance/better-sqlite-pool",
     "canvas": "^2.0.0-alpha.13",
     "chalk": "^2.4.1",
     "cheerio": "^1.0.0-rc.2",
@@ -12,7 +13,7 @@
     "common-tags": "^1.8.0",
     "custom-translate": "^2.2.4",
     "discord.js": "^11.4.2",
-    "enmap": "^3.1.4",
+    "enmap": "^4.3.2",
     "enmap-level": "^2.1.0",
     "exec": "^0.2.1",
     "fortnite-api": "^2.14.0",

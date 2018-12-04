@@ -1,5 +1,5 @@
-const Discord = require('discord.js');
-const colors = require('../assets/colorsrandom.json');
+const Discord = require("discord.js");
+const colors = require("../assets/colorsrandom.json");
 
 module.exports = async (client, oldMember, newMember) => {
 
@@ -19,9 +19,9 @@ module.exports = async (client, oldMember, newMember) => {
       .setDescription(`\`${newMember.user.username}#${newMember.user.discriminator}\` joined voice channel \`${newUserChannel.name}\``)
       .setColor(color)
       .setTimestamp();
-    if (settings.log_everything === 'true') {
+    if (settings.log_everything === "true") {
       return logs.send(editedMessage);
-    } else if (settings.voiceStateUpdate === 'true') {
+    } else if (settings.voiceStateUpdate === "true") {
       return logs.send(editedMessage);
     } else {
       return;
@@ -33,9 +33,9 @@ module.exports = async (client, oldMember, newMember) => {
       .setDescription(`\`${newMember.user.username}#${newMember.user.discriminator}\` left voice channel \`${oldUserChannel.name}\``)
       .setColor(color)
       .setTimestamp();
-    if (settings.log_everything === 'true') {
+    if (settings.log_everything === "true") {
       return logs.send(editedMessage);
-    } else if (settings.voiceStateUpdate === 'true') {
+    } else if (settings.voiceStateUpdate === "true") {
       return logs.send(editedMessage);
     } else {
       return;
@@ -47,9 +47,9 @@ module.exports = async (client, oldMember, newMember) => {
       .setDescription(`\`${newMember.user.username}#${newMember.user.discriminator}\` switched voice channel \`${oldUserChannel.name}\` ==> \`${newUserChannel.name}\``)
       .setColor(color)
       .setTimestamp();
-    if (settings.log_everything === 'true') {
+    if (settings.log_everything === "true") {
       return logs.send(editedMessage);
-    } else if (settings.voiceStateUpdate === 'true') {
+    } else if (settings.voiceStateUpdate === "true") {
       return logs.send(editedMessage);
     } else {
       return;

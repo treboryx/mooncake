@@ -1,7 +1,7 @@
 exports.run = async (client, message, params) => {
-  const Discord = require('discord.js');
-  const embedCheck = require('../modules/embedPerms.js');
-  if (!client.playlists.has(message.guild.id)) return message.channel.send('The queue is empty.');
+  const Discord = require("discord.js");
+  const embedCheck = require("../modules/embedPerms.js");
+  if (!client.playlists.has(message.guild.id)) return message.channel.send("The queue is empty.");
 
   let playlist = client.playlists.get(message.guild.id);
   playlist = playlist.queue.slice(playlist.position);
@@ -13,7 +13,7 @@ exports.run = async (client, message, params) => {
   embed.setTitle(`🎶 Currently playing ${current.songTitle.substring(0, 50)} (${current.playTime}) 🎶`)
     .setColor(message.guild.member(client.user).displayHexColor)
     .setFooter(`Requested by ${current.requester}`, current.requesterIcon)
-    .setDescription(`There ${singular ? 'is' : 'are'} currently ${playlist.length} song${singular ? '' : 's'} in the queue.\n`)
+    .setDescription(`There ${singular ? "is" : "are"} currently ${playlist.length} song${singular ? "" : "s"} in the queue.\n`)
     .setThumbnail(`https://i.ytimg.com/vi/${current.id}/mqdefault.jpg`)
     .setTimestamp()
     .setURL(current.url);
@@ -24,7 +24,7 @@ exports.run = async (client, message, params) => {
     }
     message.channel.send({embed});
   } else {
-    message.channel.send(`Currently playing ${current.songTitle.substring(0, 50)} (${current.playTime})\n\nThere ${singular ? 'is' : 'are'} currently ${playlist.length} song${singular ? '' : 's'} in the queue.\n${playlist.map.size === 0 ? '' : '🎧' + playlist.map(i => '_' + i.songTitle+'_ (' + i.playTime + ') requested by **' + i.requester + '**\n🔗 <https://www.youtube.com/watch?v='+i.id+'>\n').join('\n🎧 ')}`);
+    message.channel.send(`Currently playing ${current.songTitle.substring(0, 50)} (${current.playTime})\n\nThere ${singular ? "is" : "are"} currently ${playlist.length} song${singular ? "" : "s"} in the queue.\n${playlist.map.size === 0 ? "" : "🎧" + playlist.map(i => "_" + i.songTitle+"_ (" + i.playTime + ") requested by **" + i.requester + "**\n🔗 <https://www.youtube.com/watch?v="+i.id+">\n").join("\n🎧 ")}`);
   }
 };
 
@@ -32,12 +32,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: 'User'
+  permLevel: "User"
 };
 
 exports.help = {
-  name: 'queue',
-  category: 'Music',
-  description: 'Shows the current queue',
-  usage: 'queue'
+  name: "queue",
+  category: "Music",
+  description: "Shows the current queue",
+  usage: "queue"
 };

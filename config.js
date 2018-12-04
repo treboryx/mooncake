@@ -1,44 +1,45 @@
-const prefix = require('./util/config.json');
+const prefix = require("./util/config.json");
 
 const config = {
-  'ownerID': '254279600841031680',
+  "ownerID": "254279600841031680",
 
-  'admins': [],
+  "admins": [],
 
-  'support': [],
+  "support": [],
 
-  'token': 'oh hi mark',
+  "token": "oh hi mark",
 
-  'youtubeAPIKey': 'oh hi mark',
+  "youtubeAPIKey": "oh hi mark",
 
-  'defaultSettings' : {
-    'prefix': `${prefix.prefix}`,
-    'logs_channel': 'logs',
-    'log_everything': 'false',
-    'channelCreateDeleteUpdate': 'true',
-    'guildUpdateBanAddRemove': 'true',
-    'guildMemberAddRemoveUpdate': 'true',
-    'messageDeleteUpdate': 'true',
-    'roleCreateDeleteUpdate': 'true',
-    'voiceStateUpdate': 'false',
-    'mod_role': 'Moderator',
-    'admin_role': 'Administrator',
-    'system_notice': 'true', // This gives a notice when a user tries to run a command that they do not have permission to use.
-    'welcome_channel': 'welcome',
-    'welcome_message': 'Welcome {{user}}!',
-    'welcome_enabled': 'false'
+  "defaultSettings" : {
+    "prefix": `${prefix.prefix}`,
+    "mod_role": "Moderator",
+    "admin_role": "Administrator",
+    "logs_channel": "logs",
+    "log_everything": "false",
+    "channelCreateDeleteUpdate": "true",
+    "guildUpdateBanAddRemove": "true",
+    "guildMemberAddRemoveUpdate": "true",
+    "messageDeleteUpdate": "true",
+    "roleCreateDeleteUpdate": "true",
+    "voiceStateUpdate": "false",
+    "antiInvite" : "false",
+    "system_notice": "true", // This gives a notice when a user tries to run a command that they do not have permission to use.
+    "welcome_channel": "welcome",
+    "welcome_message": "Welcome {{user}}!",
+    "welcome_enabled": "false"
   },
 
 
   permLevels: [
 
     { level: 0,
-      name: 'User',
+      name: "User",
       check: () => true
     },
 
     { level: 2,
-      name: 'Moderator',
+      name: "Moderator",
       check: (message) => {
         try {
           const mod_role = message.guild.roles.find(r => r.name.toLowerCase() === message.settings.mod_role.toLowerCase());
@@ -50,7 +51,7 @@ const config = {
     },
 
     { level: 3,
-      name: 'Administrator',
+      name: "Administrator",
       check: (message) => {
         try {
           const admin_role = message.guild.roles.find(r => r.name.toLowerCase() === message.settings.admin_role.toLowerCase());
@@ -62,22 +63,22 @@ const config = {
     },
 
     { level: 4,
-      name: 'Server Owner',
-      check: (message) => message.channel.type === 'text' ? (message.guild.owner.user.id === message.author.id ? true : false) : false
+      name: "Server Owner",
+      check: (message) => message.channel.type === "text" ? (message.guild.owner.user.id === message.author.id ? true : false) : false
     },
 
     { level: 8,
-      name: 'Bot Support',
+      name: "Bot Support",
       check: (message) => config.support.includes(message.author.id)
     },
 
     { level: 9,
-      name: 'Bot Admin',
+      name: "Bot Admin",
       check: (message) => config.admins.includes(message.author.id)
     },
 
     { level: 10,
-      name: 'Bot Owner',
+      name: "Bot Owner",
       check: (message) => message.client.config.ownerID === message.author.id
     }
   ]
