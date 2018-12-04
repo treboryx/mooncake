@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const colors = require("../assets/colorsrandom.json");
+const Discord = require('discord.js');
+const colors = require('../assets/colorsrandom.json');
 
 exports.run = async function(client, message, args) {
   // if(!message.member.roles.some(r=>["Manager", "Lead Admin", "Admin", "Moderator", "Member"].includes(r.name)) )
@@ -12,11 +12,11 @@ exports.run = async function(client, message, args) {
     const embed = new Discord.RichEmbed()
       .setAuthor(`❯ Name: ${message.author.username}`)
       .setThumbnail(message.author.avatarURL)
-      .setDescription("Member's information")
+      .setDescription('Member\'s information')
       .setColor(message.author.displayHexColor)
-      .addField("❯ Full Username:", `${message.author.username}#${message.author.discriminator}`)
-      .addField("❯ ID:", message.author.id)
-      .addField("❯ Created At:", message.author.createdAt);
+      .addField('❯ Full Username:', `${message.author.username}#${message.author.discriminator}`)
+      .addField('❯ ID:', message.author.id)
+      .addField('❯ Created At:', message.author.createdAt);
     // .addField("❯ Permissions:", `\`\`\`${message.author.user.permissions.toArray(e => e).join(",\xa0")}\`\`\``)
 
     message.channel.send({embed});
@@ -26,12 +26,12 @@ exports.run = async function(client, message, args) {
     const embed = new Discord.RichEmbed()
       .setAuthor(`❯ Name: ${memberInfo.displayName}`)
       .setThumbnail(memberInfo.user.avatarURL)
-      .setDescription("Member's information")
+      .setDescription('Member\'s information')
       .setColor(memberInfo.displayHexColor)
-      .addField("❯ Full Username:", `${memberInfo.user.username}#${memberInfo.user.discriminator}`)
-      .addField("❯ ID:", memberInfo.id)
-      .addField("❯ Created At:", memberInfo.user.createdAt)
-      .addField("❯ Permissions:", `\`\`\`${memberInfo.permissions.toArray(e => e).join(",\xa0")}\`\`\``);
+      .addField('❯ Full Username:', `${memberInfo.user.username}#${memberInfo.user.discriminator}`)
+      .addField('❯ ID:', memberInfo.id)
+      .addField('❯ Created At:', memberInfo.user.createdAt)
+      .addField('❯ Permissions:', `\`\`\`${memberInfo.permissions.toArray(e => e).join(',\xa0')}\`\`\``);
 
     message.channel.send({embed});
   }
@@ -44,12 +44,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "User"
+  permLevel: 'User'
 };
 
 exports.help = {
-  name: "whois",
-  category: "Misc",
-  description: "shows info about a member",
-  usage: "whois [name]"
+  name: 'whois',
+  category: 'Misc',
+  description: 'shows info about a member',
+  usage: 'whois [name]'
 };

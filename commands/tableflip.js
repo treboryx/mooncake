@@ -1,9 +1,9 @@
 const frames = [
-  "(-°□°)-  ┬─┬",
-  "(╯°□°)╯    ]",
-  "(╯°□°)╯  ︵  ┻━┻",
-  "(╯°□°)╯       [",
-  "(╯°□°)╯           ┬─┬"
+  '(-°□°)-  ┬─┬',
+  '(╯°□°)╯    ]',
+  '(╯°□°)╯  ︵  ┻━┻',
+  '(╯°□°)╯       [',
+  '(╯°□°)╯           ┬─┬'
 ];
 
 function delay(ms) {
@@ -11,7 +11,7 @@ function delay(ms) {
 }
 
 exports.run = async function(client, message, args) {
-  const flip = await message.channel.send("\\\\°□°)\\\\  ┬─┬");
+  const flip = await message.channel.send('\\\\°□°)\\\\  ┬─┬');
   for (const frame of frames) {
     await delay(200);
     await flip.edit(frame);
@@ -25,12 +25,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "User"
+  permLevel: 'User'
 };
 
 exports.help = {
-  name: "tableflip",
-  category: "Misc",
-  description: "Does the tableflip animation.",
-  usage: "tableflip"
+  name: 'tableflip',
+  category: 'Misc',
+  description: 'Does the tableflip animation.',
+  usage: 'tableflip'
 };

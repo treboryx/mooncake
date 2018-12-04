@@ -1,7 +1,7 @@
-const exec = require("child_process").exec;
+const exec = require('child_process').exec;
 
 exports.run = async (client, message, args, level) => {
-  exec(`${args.join(" ")}`, (error, stdout) => {
+  exec(`${args.join(' ')}`, (error, stdout) => {
     const response = (error || stdout);
     message.channel.send(`Ran: ${message.content}\n\`\`\`${response}\`\`\``, {split: true}).catch(console.error);
   });
@@ -10,13 +10,13 @@ exports.run = async (client, message, args, level) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["shell"],
-  permLevel: "Bot Owner"
+  aliases: ['shell'],
+  permLevel: 'Bot Owner'
 };
 
 exports.help = {
-  name: "exec",
-  category: "Owner",
-  description: "Execute commands.",
-  usage: "exec [command]"
+  name: 'exec',
+  category: 'Owner',
+  description: 'Execute commands.',
+  usage: 'exec [command]'
 };

@@ -9,7 +9,7 @@ exports.run = (client, message, args, level) => {
     const commandNames = myCommands.keyArray();
     const longest = commandNames.reduce((long, str) => Math.max(long, str.length), 0);
 
-    let currentCategory = "";
+    let currentCategory = '';
     let output = `= Command List =\n\n[Use ${message.settings.prefix}help <commandname> for details]\n`;
     const sorted = myCommands.array().sort((p, c) => p.help.category > c.help.category ? 1 :  p.help.name > c.help.name && p.help.category === c.help.category ? 1 : -1 );
     sorted.forEach( c => {
@@ -18,16 +18,16 @@ exports.run = (client, message, args, level) => {
         output += `\u200b\n== ${cat} ==\n`;
         currentCategory = cat;
       }
-      output += `${message.settings.prefix}${c.help.name}${" ".repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
+      output += `${message.settings.prefix}${c.help.name}${' '.repeat(longest - c.help.name.length)} :: ${c.help.description}\n`;
     });
-    message.author.send(output, {code: "asciidoc", split: { char: "\u200b" }});
+    message.author.send(output, {code: 'asciidoc', split: { char: '\u200b' }});
   } else {
     // Show individual command's help.
     let command = args[0];
     if (client.commands.has(command)) {
       command = client.commands.get(command);
       if (level < client.levelCache[command.conf.permLevel]) return;
-      message.author.send(`= ${command.help.name} = \n${command.help.description}\nusage:: ${command.help.usage}\naliases:: ${command.conf.aliases.join(", ")}\n= ${command.help.name} =`, {code:"asciidoc"});
+      message.author.send(`= ${command.help.name} = \n${command.help.description}\nusage:: ${command.help.usage}\naliases:: ${command.conf.aliases.join(', ')}\n= ${command.help.name} =`, {code:'asciidoc'});
     }
   }
 };
@@ -35,13 +35,13 @@ exports.run = (client, message, args, level) => {
 exports.conf = {
   enabled: true,
   guildOnly: false,
-  aliases: ["ohelp"],
-  permLevel: "User"
+  aliases: ['ohelp'],
+  permLevel: 'User'
 };
 
 exports.help = {
-  name: "oldhelp",
-  category: "System",
-  description: "Displays all the available commands for your permission level.",
-  usage: "oldhelp [command]"
+  name: 'oldhelp',
+  category: 'System',
+  description: 'Displays all the available commands for your permission level.',
+  usage: 'oldhelp [command]'
 };

@@ -1,11 +1,11 @@
-const errors = require("../util/errors.js");
-const Discord = require("discord.js");
-var request = require("request");
-var cheerio = require("cheerio");
+const errors = require('../util/errors.js');
+const Discord = require('discord.js');
+var request = require('request');
+var cheerio = require('cheerio');
 
 function getStatData(location, message , $) {
 
-  var selector = $(".stats-stat .value").eq(location).text();
+  var selector = $('.stats-stat .value').eq(location).text();
 
   var stat_array = $.parseHTML(selector);
 
@@ -28,10 +28,10 @@ exports.run = async function(client, message, args) {
 
 
   if (!args[0]) {
-    return message.channel.send("Please Enter a valid STEAMID64 or custom url");
+    return message.channel.send('Please Enter a valid STEAMID64 or custom url');
   }
 
-  var UR_L = "http://csgo.tracker.network/profile/" + args[0];
+  var UR_L = 'http://csgo.tracker.network/profile/' + args[0];
 
 
 
@@ -60,24 +60,24 @@ exports.run = async function(client, message, args) {
 
     var STAT = new Discord.RichEmbed()
 
-      .setTitle("__***CSGO Stats***__")
+      .setTitle('__***CSGO Stats***__')
       .setURL(UR_L)
-      .setColor("RANDOM")
-      .addField("K/D", KD, true)
-      .addField("WINS", WINS, true)
-      .addField("Win%", WIN, true)
-      .addField("Score", SCORE, true)
-      .addField("Kills", KILLS, true)
-      .addField("Deaths", DEATHS, true)
-      .addField("Rounds Played", RP, true)
-      .addField("Rounds Won", RW, true)
-      .addField("Bombs Set", BS, true)
-      .addField("Bombs Defused", BD, true)
-      .addField("Headshots", HS, true)
-      .addField("MVPs", MVP, true)
-      .addField("Money Earned", MONEY, true)
-      .addField("Hostages Rescued", HR, true)
-      .addField("Playtime", PLAYTIME, true);
+      .setColor('RANDOM')
+      .addField('K/D', KD, true)
+      .addField('WINS', WINS, true)
+      .addField('Win%', WIN, true)
+      .addField('Score', SCORE, true)
+      .addField('Kills', KILLS, true)
+      .addField('Deaths', DEATHS, true)
+      .addField('Rounds Played', RP, true)
+      .addField('Rounds Won', RW, true)
+      .addField('Bombs Set', BS, true)
+      .addField('Bombs Defused', BD, true)
+      .addField('Headshots', HS, true)
+      .addField('MVPs', MVP, true)
+      .addField('Money Earned', MONEY, true)
+      .addField('Hostages Rescued', HR, true)
+      .addField('Playtime', PLAYTIME, true);
     message.channel.send(STAT);
   });
 
@@ -87,12 +87,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "User"
+  permLevel: 'User'
 };
 
 exports.help = {
-  name: "csgo",
-  category: "Misc",
-  description: "Display CSGO Stats",
-  usage: "csgo [steamID]"
+  name: 'csgo',
+  category: 'Misc',
+  description: 'Display CSGO Stats',
+  usage: 'csgo [steamID]'
 };

@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const colors = require("../assets/colorsrandom.json");
+const Discord = require('discord.js');
+const colors = require('../assets/colorsrandom.json');
 
 
 module.exports = async (client, oldMember, newMember) => {
@@ -9,10 +9,10 @@ module.exports = async (client, oldMember, newMember) => {
   const logs = newMember.guild.channels.find(channel => channel.name === settings.logs_channel);
   if (!logs) return;
 
-  const entry = await oldMember.guild.fetchAuditLogs({type: "MEMBER_UPDATE"}).then(audit => audit.entries.first());
+  const entry = await oldMember.guild.fetchAuditLogs({type: 'MEMBER_UPDATE'}).then(audit => audit.entries.first());
   const user = entry.executor;
 
-  const entryRoles = await oldMember.guild.fetchAuditLogs({type: "MEMBER_ROLE_UPDATE"}).then(audit => audit.entries.first());
+  const entryRoles = await oldMember.guild.fetchAuditLogs({type: 'MEMBER_ROLE_UPDATE'}).then(audit => audit.entries.first());
   const userRoles = entryRoles.executor;
   // if (entry.extra.channel.id === oldMember.channel.id
   // if (entry.target.id === entry.author.id
@@ -35,14 +35,14 @@ module.exports = async (client, oldMember, newMember) => {
       if (oldMember.roles.size > newMember.roles.size) {
         const removedRole = removedR.name;
         const embed = new Discord.RichEmbed()
-          .setAuthor("Member Updated", newMember.avatarURL)
+          .setAuthor('Member Updated', newMember.avatarURL)
           .setDescription(`${newMember} removed from ${removedR}`)
           .setColor(newMember.displayHexColor)
           .setFooter(`By ${userRoles.username}#${userRoles.discriminator}`, userRoles.avatarURL)
           .setTimestamp();
-        if (settings.log_everything === "true") {
+        if (settings.log_everything === 'true') {
           return logs.send(embed);
-        } else if (settings.guildMemberAddRemoveUpdate === "true") {
+        } else if (settings.guildMemberAddRemoveUpdate === 'true') {
           return logs.send(embed);
         } else {
           return;
@@ -50,14 +50,14 @@ module.exports = async (client, oldMember, newMember) => {
       } else if (oldMember.roles.size < newMember.roles.size) {
         const addedRole = addedR.name;
         const embed = new Discord.RichEmbed()
-          .setAuthor("Member Updated", newMember.avatarURL)
+          .setAuthor('Member Updated', newMember.avatarURL)
           .setDescription(`${newMember} added to ${addedR}`)
           .setColor(newMember.displayHexColor)
           .setFooter(`By ${userRoles.username}#${userRoles.discriminator}`, userRoles.avatarURL)
           .setTimestamp();
-        if (settings.log_everything === "true") {
+        if (settings.log_everything === 'true') {
           return logs.send(embed);
-        } else if (settings.guildMemberAddRemoveUpdate === "true") {
+        } else if (settings.guildMemberAddRemoveUpdate === 'true') {
           return logs.send(embed);
         } else {
           return;
@@ -65,16 +65,16 @@ module.exports = async (client, oldMember, newMember) => {
       }
     }
     const memberUpdated = new Discord.RichEmbed()
-      .setAuthor("Member Updated", newMember.avatarURL)
+      .setAuthor('Member Updated', newMember.avatarURL)
       .setDescription(`${newMember}`)
       .setColor(newMember.displayHexColor)
-      .addField("Before:", oldMember.roles.map(e => e).join(","))
-      .addField("After:", newMember.roles.map(e => e).join(","))
+      .addField('Before:', oldMember.roles.map(e => e).join(','))
+      .addField('After:', newMember.roles.map(e => e).join(','))
       .setFooter(`By ${userRoles.username}#${userRoles.discriminator}`, userRoles.avatarURL)
       .setTimestamp();
-    if (settings.log_everything === "true") {
+    if (settings.log_everything === 'true') {
       return logs.send(memberUpdated);
-    } else if (settings.guildMemberAddRemoveUpdate === "true") {
+    } else if (settings.guildMemberAddRemoveUpdate === 'true') {
       return logs.send(memberUpdated);
     } else {
       return;
@@ -85,14 +85,14 @@ module.exports = async (client, oldMember, newMember) => {
       if (oldMember.nickname === null) {
 
         const memberUpdated = new Discord.RichEmbed()
-          .setAuthor("Nickname Changed", newMember.avatarURL)
+          .setAuthor('Nickname Changed', newMember.avatarURL)
           .setDescription(`❯ ${newMember}\n❯ **Before:** None\n❯ **After:** ${newMember.nickname}`)
           .setColor(newMember.displayHexColor)
           .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
           .setTimestamp();
-        if (settings.log_everything === "true") {
+        if (settings.log_everything === 'true') {
           logs.send(memberUpdated);
-        } else if (settings.guildMemberAddRemoveUpdate === "true") {
+        } else if (settings.guildMemberAddRemoveUpdate === 'true') {
           logs.send(memberUpdated);
         } else {
           return;
@@ -100,15 +100,15 @@ module.exports = async (client, oldMember, newMember) => {
       } else if (newMember.nickname === null) {
 
         const memberUpdated = new Discord.RichEmbed()
-          .setAuthor("Nickname Changed", newMember.avatarURL)
+          .setAuthor('Nickname Changed', newMember.avatarURL)
           .setDescription(`❯ ${newMember}\n❯ **Before:** ${oldMember.nickname}\n❯ **After:** None`)
           .setColor(newMember.displayHexColor)
           .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
           .setTimestamp();
 
-        if (settings.log_everything === "true") {
+        if (settings.log_everything === 'true') {
           logs.send(memberUpdated);
-        } else if (settings.guildMemberAddRemoveUpdate === "true") {
+        } else if (settings.guildMemberAddRemoveUpdate === 'true') {
           logs.send(memberUpdated);
         } else {
           return;
@@ -117,15 +117,15 @@ module.exports = async (client, oldMember, newMember) => {
       } else {
 
         const memberUpdated = new Discord.RichEmbed()
-          .setAuthor("Nickname Changed", newMember.avatarURL)
+          .setAuthor('Nickname Changed', newMember.avatarURL)
           .setDescription(`❯ ${newMember}\n❯ **Before:** ${oldMember.nickname}\n❯ **After:** ${newMember.nickname}`)
           .setColor(newMember.displayHexColor)
           .setFooter(`By ${user.username}#${user.discriminator}`, user.avatarURL)
           .setTimestamp();
 
-        if (settings.log_everything === "true") {
+        if (settings.log_everything === 'true') {
           logs.send(memberUpdated);
-        } else if (settings.guildMemberAddRemoveUpdate === "true") {
+        } else if (settings.guildMemberAddRemoveUpdate === 'true') {
           logs.send(memberUpdated);
         } else {
           return;

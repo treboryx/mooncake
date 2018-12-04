@@ -1,7 +1,7 @@
-const quotes = require("../assets/quotes.json");
-const Discord = require("discord.js");
-const colors = require("../assets/colorsrandom.json");
-const staticColor = require("../assets/colors.json");
+const quotes = require('../assets/quotes.json');
+const Discord = require('discord.js');
+const colors = require('../assets/colorsrandom.json');
+const staticColor = require('../assets/colors.json');
 
 exports.run = async function(client, message, args) {
   const quote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -19,12 +19,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "Bot Owner"
+  permLevel: 'Bot Owner'
 };
 
 exports.help = {
-  name: "quote",
-  category: "Misc",
-  description: "Returns a random quote",
-  usage: "quote"
+  name: 'quote',
+  category: 'Misc',
+  description: 'Returns a random quote',
+  usage: 'quote'
 };

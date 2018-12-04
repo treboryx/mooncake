@@ -1,16 +1,16 @@
-const trump = require("react-trump");
-const { trumpers } = require("../assets/arrays.json");
+const trump = require('react-trump');
+const { trumpers } = require('../assets/arrays.json');
 const exclamations = 1;
 const incquestion = false;
-const mainFuncs = require("../util/main.js");
+const mainFuncs = require('../util/main.js');
 
 
 exports.run = async function(client, msg, args) {
   if (!args[0]) {
-    return msg.reply("You gotta give me something to ask Trump :eyes:", msg);
+    return msg.reply('You gotta give me something to ask Trump :eyes:', msg);
   }
 
-  const question = args.join(" ");
+  const question = args.join(' ');
   const answer = await trump.answer({
     question,
     exclamations,
@@ -32,12 +32,12 @@ exports.conf = {
   enabled: true,
   guildOnly: false,
   aliases: [],
-  permLevel: "User"
+  permLevel: 'User'
 };
 
 exports.help = {
-  name: "asktrump",
-  category: "Misc",
-  description: "Ask Trump something.",
-  usage: "asktrump"
+  name: 'asktrump',
+  category: 'Misc',
+  description: 'Ask Trump something.',
+  usage: 'asktrump'
 };
