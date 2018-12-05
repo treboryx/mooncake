@@ -71,7 +71,7 @@ exports.checkMembersDND = function(guild) {
 exports.checkMembersStreaming = function(guild) {
   let memberCountStreaming = 0;
   guild.members.forEach(member => {
-    if (member.user.presence.game.type === 'STREAMING') memberCountStreaming++;
+    if (member.user.presence === 'STREAMING') memberCountStreaming++;
   });
   return memberCountStreaming;
 };
