@@ -1,10 +1,12 @@
 // client, other, args
 const data = require('../util/functions.js');
 const monitor = require('../modules/monitor.js');
+const dms = require('../modules/dms.js');
 
 module.exports = (client, message) => {
 
   if (message.author.bot) return;
+  dms.run(client, message);
   const settings = message.settings = client.getGuildSettings(message.guild);
 
   const blacklist = client.blacklist;

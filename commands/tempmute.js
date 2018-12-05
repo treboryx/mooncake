@@ -11,7 +11,7 @@ exports.run = async function(client, message, args) {
     return;
   }
   const tomute = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if (!tomute) return message.reply('You didn\'t mentioned a user');
+  if (!tomute) return message.reply('You didn\'t mention a user');
   if (tomute.hasPermission('MANAGE_MESSAGES')) return message.reply('Can\'t mute user with equal permissions.');
   const reason = args.slice(2).join(' ');
   // if (!reason) return message.reply(`Usage: ${message.settings.prefix}mute <user> <1s/m/h/d>`);
