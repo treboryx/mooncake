@@ -2,7 +2,7 @@ exports.run = async function(client, message, args) {
   const amount = args[0];
   if (!amount) return message.error(message, 'You must supply an amount of messages to use this command.');
   try {
-    const msgs = await message.channel.fetchMessages({ limit: `${amount}` + 1})
+    const msgs = await message.channel.fetchMessages({ limit: amount})
       .then(messages => messages.map(m => `${m.createdAt} (${m.guild.id} / #${m.channel.id} / ${m.author.id}) ${m.author.tag} : ${m.cleanContent}`).join('\n'));
     const hasteURL = await require('snekfetch')
       .post('https://hastebin.com/documents')

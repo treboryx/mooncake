@@ -66,7 +66,7 @@ exports.run = async (client, message, params) => {
     requester: message.guild.member(message.author).displayName,
     requesterIcon: message.author.avatarURL
   });
-
+  console.log('test');
   if (firstSong) {
     playNext(message);
   } else {

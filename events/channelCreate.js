@@ -3,6 +3,8 @@ const colors = require('../assets/colorsrandom.json');
 
 module.exports = async (client, channel) => {
 
+  if (!channel) return;
+
   const settings = client.getGuildSettings(channel.guild);
 
   const logs = channel.guild.channels.find(channel => channel.name === settings.logs_channel);

@@ -12,7 +12,7 @@ const autoResponder = {
   ';spock': {
     file: 'https://cdn.discordapp.com/attachments/275732552797519873/475936918027239425/Z.png'
   },
-  ';mock': {
+  ';bobmock': {
     file: 'https://cdn.discordapp.com/attachments/458751527407058954/473641693883924481/mock.png'
   },
   ';kthnx': {

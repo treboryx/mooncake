@@ -6,10 +6,10 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-data/
+/data
 
 
 # Dependency directories
-node_modules/
-build/
-stuff/
+/node_modules
+/build
+/stuff
