@@ -65,58 +65,6 @@ const init = async () => {
 
 };
 
-// client.on('message', async message => {
-//   var args = message.content.split(/[ ]+/);
-
-//   if (message.content === '🤔')
-// return message.react('🤔');
-
-// ===================================================================
-
-// if (message.author.bot) return;
-//    if(hasRole(message.member, ":thinking:")) {
-//      return message.react('🤔');
-//    }
-
-// ===================================================================
-
-
-
-// ===================================================================
-
-// if(commander("ping", message))  {
-//     const m = await message.channel.send("Ping?");
-//     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`);
-//    }
-
-// ===================================================================
-
-/* Reacts on author's message with any set emoji
-client.on('message', message => {
-  // If the user ID is "defined"
-  if (message.author.id === 'AUTHOR_ID') {
-    // Send reaction after "author.id" posts.
-	message.react('SETEMOJI');
-  }
-});
-*/
-
-
-// This will react the author's message with all (or as many as possible) guild emojis
-// client.on('message', message => {
-//   all_emoji = client.guilds.first().emojis;
-//   if (message.author.id === '25') {
-//     // Send reaction after "author.id" posts.
-// 	all_emoji.array().forEach((emo) => {
-//       message.react(emo);
-//     });
-//
-//   }
-// });
-
-// });
-
-
 
 exports.statistics = function() {
   const memoryUsage = process.memoryUsage();

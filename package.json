@@ -1,7 +1,7 @@
 {
-  "name": "k3",
+  "name": "mooncake",
   "version": "1.0.0",
-  "description": "k3 discord.js bot",
+  "description": "mooncake discord.js bot",
   "main": "index.js",
   "dependencies": {
     "@sentry/node": "^4.4.1",
@@ -54,13 +54,7 @@
     "url": "git+https://github.com/treboryx/k3.git"
   },
   "keywords": [
-    "k3",
-    "k3dm",
-    "k3bot",
-    "k3",
-    "bot",
-    "k3",
-    "dm"
+    "mooncake"
   ],
   "author": "treboryx",
   "license": "ISC",
