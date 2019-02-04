@@ -1,6 +1,6 @@
 exports.run = async function(client, message, args) {
     
-  const user = message.guild.member(message.mentions.users.first() || client.users.get(args[0]));
+  const user = message.mentions.users.first() || client.users.get(args[0]);
   if (!user) return message.reply('You didn\'t mention a user');
   const msgContent = args.slice(1).join(' ');
   user.send(msgContent);
