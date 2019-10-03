@@ -1,6 +1,6 @@
 exports.run = function(client, message, args) {
-  if(!args.length) return message.channel.send("Can't be empty.");
-  message.channel.send(`(( ${args.join(" ")} ))`);
+  if (!args.length) return message.channel.send('Can\'t be empty.');
+  message.channel.send(`(( ${args.join(' ')} ))`);
   message.delete();
 };
 
